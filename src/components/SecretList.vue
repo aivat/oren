@@ -17,23 +17,31 @@ export default {
     //error: 'secretError'
   }),
   created () {
-    this.$store.dispatch('getSecrets')
+    this.$store.dispatch('getSecrets', 0),
+    window.addEventListener('scroll', this.handleScroll)
   },
+  	destroyed () {
+	  		window.removeEventListener('scroll', this.handleScroll)
+	},
   methods: {
         handleScroll (event, lastSecret, loading, error) {
         // почему так высчитывается так до конца и не разобрался, но математическим путем опряделяется верно. 40 пиксей добавил, чтобы загрузка происхода еще до прокрутки до самого низа
         let scrollTop = window.pageYOffset,
-            listOffsetHeight = document.body.offsetHeight,
-            listScrollHeight = document.body.scrollHeight
-
+        //listOffsetHeight = document.body.offsetHeight,
+        listScrollHeight = document.body.scrollHeight
+        let listOffsetHeight = document.documentElement.clientHeight
         let diffHeight = listScrollHeight - listOffsetHeight
-
+        console.log(diffHeight)
+        console.log(scrollTop)
+        console.log(listScrollHeight)
+        console.log(listOffsetHeight)
 //        if (diffHeight <= (scrollTop+40) && !loading && !error) {
 //            this.$store.dispatch('getSecrets', lastSecret)
 //        }
             
-         if (diffHeight <= (scrollTop+40)) {
-            this.$store.dispatch('getSecrets', lastSecret)
+         if (diffHeight <= (scrollTop+200)) {
+            this.$store.dispatch('getSecrets', this.lastSecret)
+            console.log('йцуывава = '+this.lastSecret);
         }
     }
   }

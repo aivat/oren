@@ -19,18 +19,24 @@ const _secrets = [
   {"id": 15, "content": "Я не сторонник отношений, в которых люди несчастны. Неважно: дети, дом, машина. Может, потому я и живу счастливо, не теряя времени. Моя бывшая — мать моего ребёнка. Развод произошёл очень быстро, просто понял сразу после рождения сына, что не люблю ее. Как-то пришёл после работы и в очередной раз на скривлённое лицо бывшей отреагировал: \"Милая, я хочу развестись!\" Но! С ребёнком я помогаю: три раза в неделю я забираю пацана к себе, всю одежду покупаю я и кормим малого тоже в основном на свои деньги. С бывшей отношения никакие, но до сих пор я не могу обьяснить феномен, в котором она постит себе на стену всякую херню типа «сунул-вышел и пропал». Злюсь нереально, что сын подрастёт и будет слушать эту херню про меня!", "id_author": 29, "author": "ayna_iman", "plus": 1879, "minus": 696, "views": 8, "count_comment": 1789, "sex_ material": 1, "date_of_creat": "2018-03-04 14:13:31"}
 ]
 var arr = ["Почему", "надо", "учить", "JavaScript", "Почему", "надо", "учить","Почему", "надо", "учить", "JavaScript", "Почему", "надо", "учить","Почему", "надо", "учить", "JavaScript", "Почему", "надо", "учить","Почему", "надо", "учить", "JavaScript", "Почему", "надо", "учить","Почему", "надо", "учить", "JavaScript", "Почему", "надо", "учить"];
+function getLastSecrets (lastSecret) {
+  return _secrets.filter(function(number) {
+      return (number['id'] > lastSecret) && (number['id'] < lastSecret + 10);
+  });
+}
 export default {
-  getSecrets (cb) {
-    setTimeout(() => cb(_secrets), 100)
-  },
+  // getSecrets (cb) {
+  //   setTimeout(() => cb(_secrets), 100)
+  // },
     
 //  getAllSecrets (lastSecret, cb) {
 //    setTimeout(() => cb(_secrets.slice(lastSecret, lastSecret+10)), 100)
 //  }
     
-getAllSecrets (lastSecret, cb) {
-    setTimeout(() => cb(
-       arr.slice(lastSecret, lastSecret+10) 
-    ), 100)
+getSecrets (lastSecret, cb) {
+    setTimeout(() => cb(getLastSecrets(lastSecret)), 100)
   }
+
+           
+
 }

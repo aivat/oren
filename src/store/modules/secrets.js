@@ -3,7 +3,7 @@ import shopSecrets from '../../api/shopSecrets'
 // initial state
 const state = {
   all: [],
-  lastIdSecret: 1
+  lastIdSecret: 0
 }
 
 // getters
@@ -14,16 +14,17 @@ const getters = {
 
 // actions
 const actions = {
-  getAllSecrets ({ commit }) {
-    shopSecrets.getSecrets(secrets => {
-      commit('setSecrets', secrets)
-    })
-  },
+  // getAllSecrets ({ commit }) {
+  //   shopSecrets.getSecrets(secrets => {
+  //     commit('setSecrets', secrets)
+  //   })
+  // },
+  
   getSecrets ({ commit, state }, lastSecret) {
-    shopSecrets.getAllSecrets(lastSecret, secrets => {
-      commit('setSecrets', secrets)
+    shopSecrets.getSecrets(lastSecret, secrets => {
+      commit('setSecrets', secrets);
     }) 
-    commit('setLastSecret', lastSecret+10)
+    commit('setLastSecret', lastSecret+6)
   }
 }
 
