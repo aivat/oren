@@ -1,54 +1,28 @@
 <template>
   <div id="app">
-    <header>
-      <span>Vue.js PWA</span>
-    </header>
+    <h1>Пример выводы секретов</h1>
+    <hr>
+    <h2>Секреты</h2>
+    <SecretList/>
     <main>
-      <img src="./assets/logo.png" alt="Vue.js PWA">
-      <router-view></router-view>
+    <img src="./assets/logo.png" alt="Vue.js PWA">
+
     </main>
   </div>
 </template>
 
 <script>
+import SecretList from './components/SecretList'
+    
 export default {
-  name: 'app'
+  name: 'app',
+  components: { SecretList }  
 }
 </script>
 
 <style>
 body {
   margin: 0;
-}
+}   
 
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
-
-main {
-  text-align: center;
-  margin-top: 40px;
-}
-
-header {
-  margin: 0;
-  height: 56px;
-  padding: 0 16px 0 24px;
-  background-color: #35495E;
-  color: #ffffff;
-}
-
-header span {
-  display: block;
-  position: relative;
-  font-size: 20px;
-  line-height: 1;
-  letter-spacing: .02em;
-  font-weight: 400;
-  box-sizing: border-box;
-  padding-top: 16px;
-}
 </style>
