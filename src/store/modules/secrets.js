@@ -3,13 +3,17 @@ import shopSecrets from '../../api/shopSecrets'
 // initial state
 const state = {
   all: [],
-  lastIdSecret: 0
+  lastIdSecret: 1,
+  loading: false,
+  error: false
 }
 
 // getters
 const getters = {
   allSecrets: state => state.all,
-  lastIdSecret: state => state.lastIdSecret
+  lastIdSecret: state => state.lastIdSecret,
+  secretLoading: state => state.loading,
+  secretError: state => state.error
 }
 
 // actions
@@ -21,8 +25,10 @@ const actions = {
   // },
   
   getSecrets ({ commit, state }, lastSecret) {
+    commit('setLoading', true);
     shopSecrets.getSecrets(lastSecret, secrets => {
       commit('setSecrets', secrets);
+      commit('setLoading', false);
     }) 
     commit('setLastSecret', lastSecret+6)
   }
@@ -35,6 +41,9 @@ const mutations = {
   },
   setLastSecret (state, lastSecret) {
     state.lastIdSecret = lastSecret;
+  },
+  setLoading (state, loading) {
+    state.loading = loading;
   } 
 
 //  decrementSecretInventory (state, { id }) {
