@@ -1,6 +1,6 @@
 <template>
 <div class="news">
-	<ul class="news-list">
+	<ul class="news-list" v-for="secret in secrets">
 		<li class="news-list-item">
 			<article>
         <div class="news-list-item-footer-rating-left">
@@ -12,7 +12,7 @@
                 </button>
             </div>
             <div class="news-list-item-footer-rating-count">
-                +275
+                {{ secret.plus - secret.minus }}
             </div>							
             <div class="news-list-item-footer-rating-down">
                 <button class="news-list-item-footer-rating-button" title="Поставить минус">
@@ -30,7 +30,7 @@
             <a href="#" class="news-list-item-header-author">
               <div class="news-list-item-header-author-avatar" id="avatar"></div>
               <div class="author">
-                admin
+                {{ secret.author }}
               </div>
             </a>	
           </div>
@@ -45,7 +45,7 @@
                     
                 </div>
                 <div class="news-list-item-header-menu-actions-triangle-right-transparent">
-                    
+                
                 </div>
                 <div class="news-list-item-header-menu-actions-list">
                     <a class="news-list-item-header-menu-actions-list-item">
@@ -63,7 +63,7 @@
             <div class="news-list-item-content-wrap">
             </div>
             <div class="news-list-item-content-annotation secret-list-item">
-Преимущество этого типа в том, что он записывает номер значения вместо самого значения в каждую строку. Этим обеспечивается огромная экономия места.
+              {{ secret.content }}
             </div>								
           </a>
         </div>
@@ -90,27 +90,25 @@
           <div class="news-list-item-footer-wrap">
             <div class="news-list-item-footer-comments">
             <a href="#" class="news-list-item-footer-comments-href">
-
               <div class="news-list-item-footer-comments-svg">
                 <svg fill="#000000" height="24" viewBox="0 2 24 24" width="24" xmlns="http://www.w3.org/2000/svg">    
                   <path data-brackets-id="5866" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path>
                   </svg>
               </div>
               <div class="news-list-item-footer-comments-count">
-                1524
+                {{ secret.count_comment }}
               </div>
             </a>
           </div>
             <div class="news-list-item-footer-comments">
             <a href="#" class="news-list-item-footer-comments-href">
-
               <div class="news-list-item-footer-comments-svg">
                 <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/>
                 </svg>						
               </div>
               <div class="news-list-item-footer-comments-count">
-                37
+                {{ secret.views }}
               </div>
             </a>
           </div>
