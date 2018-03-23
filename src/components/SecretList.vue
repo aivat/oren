@@ -1,7 +1,7 @@
 <template>
 <div class="news">
-	<ul class="news-list" v-for="secret in secrets">
-		<li class="news-list-item">
+	<ul class="news-list" >
+		<li class="news-list-item" v-for="secret in secrets">
 			<article>
         <div class="news-list-item-footer-rating-left">
             <div class="news-list-item-footer-rating-up">
@@ -25,7 +25,7 @@
         <header class="news-list-item-header">
           <div class="news-list-item-header-wrap">
             <div class="news-list-item-header-time">
-              3 часа назад
+              {{ formatDate(secret.date_of_creat) }}
             </div>
             <a href="#" class="news-list-item-header-author">
               <div class="news-list-item-header-author-avatar" id="avatar"></div>
@@ -67,25 +67,36 @@
             </div>								
           </a>
         </div>
-        <footer class="news-list-item-footer">
-          <div class="news-list-item-footer-rating">
-            <div class="news-list-item-footer-rating-up">
-              <button class="news-list-item-footer-rating-button" title="Поставить плюсик">
-                <svg fill="#000000" height="32" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
-                </svg>
-              </button>
-            </div>
-            <div class="news-list-item-footer-rating-count">
-              -1275
-            </div>							
-            <div class="news-list-item-footer-rating-down">
-              <button class="news-list-item-footer-rating-button" title="Поставить минус">
-                <svg fill="#000000" height="32" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
-                </svg>										
-              </button>
-            </div>							
+        <footer class="news-list-item-footer news-list-item-footer-secret">
+          <div class="news-list-item-footer-wrap">
+              <div class="news-list-item-footer-rating">
+                  <div class="news-list-item-footer-rating-up">
+                      <button class="news-list-item-footer-rating-button" title="Поставить плюсик">
+                          <svg fill="#000000" height="32" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+                          </svg>
+                      </button>
+                  </div>
+                  <div class="news-list-item-footer-rating-count">
+                      {{ secret.plus - secret.minus }}
+                  </div>							
+                  <div class="news-list-item-footer-rating-down">
+                      <button class="news-list-item-footer-rating-button" title="Поставить минус">
+                          <svg fill="#000000" height="32" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
+                          </svg>										
+                      </button>
+                  </div>							
+              </div>
+              <div class="news-list-item-footer-strawberry">
+                  <svg id="strawberry" viewBox="-6 -4 24 24" width="24" height="24">
+                      <g>
+                      <path  fill="#fd5d47" d="M9.207 10.076L3.53 13.62a1.903 1.903 0 0 1-2.91-1.613L.618 5.314a2.794 2.794 0 0 1 4.15-2.439l4.31 2.388a2.795 2.795 0 0 1 .13 4.813zm-5.77-6.17c-.885-.49-.72 1.295-.72 1.295s1.605-.804.72-1.295zm-.2 3.598C2.353 7.014 2.52 8.8 2.52 8.8s1.602-.806.717-1.296zm2.946-2.077c-.885-.49-.718 1.297-.718 1.297s1.603-.806.718-1.297zm-3.145 5.675c-.885-.49-.72 1.296-.72 1.296s1.604-.805.72-1.296zm2.946-2.076c-.885-.49-.72 1.296-.72 1.296s1.604-.806.72-1.296zM8.93 6.95c-.885-.49-.72 1.296-.72 1.296s1.604-.806.72-1.296z">
+                      </path>
+                      <path fill="#8ac858" d="M5.157 2.127c-.182-.1-.37-.185-.56-.254.08-.53.325-1.007.692-1.354.534.108 1.03.42 1.386.88.61-.568 1.396-.872 2.172-.85.43.646.588 1.473.43 2.292.578.06 1.106.313 1.482.71-.1.495-.376.955-.78 1.304a3.8 3.8 0 0 0-.513-.34l-4.31-2.39z">
+                      </path></g>
+                  </svg>
+              </div>
           </div>
           <div class="news-list-item-footer-wrap">
             <div class="news-list-item-footer-comments">
@@ -96,7 +107,7 @@
                   </svg>
               </div>
               <div class="news-list-item-footer-comments-count">
-                {{ secret.count_comment }}
+                {{ secret.views }}
               </div>
             </a>
           </div>
@@ -108,7 +119,7 @@
                 </svg>						
               </div>
               <div class="news-list-item-footer-comments-count">
-                {{ secret.views }}
+                {{ secret.count_comment }}
               </div>
             </a>
           </div>
@@ -123,14 +134,19 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
-  computed: mapGetters({
+  computed: { 
+    ...mapGetters({
     secrets: 'allSecrets',
     lastSecret: 'lastIdSecret',
     loading: 'secretLoading',
     error: 'secretError'
-  }),
+    }),
+    qweqw(dates) {
+      return Date.parse(dates)
+    }
+  },
   created () {
-    this.$store.dispatch('getSecrets', 0),
+    this.$store.dispatch('getAllSecrets', 0),
     window.addEventListener('scroll', this.handleScroll)
   },
   	destroyed () {
@@ -153,10 +169,50 @@ export default {
 //        }
             
          if (diffHeight <= (scrollTop+200) && !this.loading && !this.error) {
-            this.$store.dispatch('getSecrets', this.lastSecret)
+            this.$store.dispatch('getAllSecrets', this.lastSecret)
             console.log('йцуывава = '+ this.lastSecret);
+         }
+        },
+        formatDate(dates) {
+          let date = Date.parse(dates);
+          var diff = new Date() - date; // разница в миллисекундах
+        
+          if (diff < 1000) { // прошло менее 1 секунды
+            return 'только что';
+          }
+        
+          var sec = Math.floor(diff / 1000); // округлить diff до секунд
+        
+          if (sec < 60) {
+            return sec + ' сек. назад';
+          }
+        
+          var min = Math.floor(diff / 60000); // округлить diff до минут
+          if (min < 60) {
+            return min + ' мин. назад';
+          }
+        
+          // форматировать дату, с учетом того, что месяцы начинаются с 0
+          var d = new Date();
+          //d = date;
+          d = [
+            '0' + d.getDate(),
+            '0' + (d.getMonth() + 1),
+            '' + d.getFullYear(),
+            '0' + d.getHours(),
+            '0' + d.getMinutes()
+          ];
+        
+          for (var i = 0; i < d.length; i++) {
+            d[i] = d[i].slice(-2);
+          }
+        
+          return d.slice(0, 3).join('.') + ' ' + d.slice(3).join(':');
+        },
+        qwe(dates) {
+           return Date.parse(dates)
         }
-    }
+    
   }
 }
 </script>
@@ -560,11 +616,24 @@ export default {
 	line-height: 24px;
 }
 
+.news-list-item-footer-secret {
+    justify-content: space-between;
+}
+.news-list-item-footer-strawberry {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
 @media (min-width: 1280px) {
 	.secret-list-item {
 		font-size: 18px;
 		font-weight: 400;
 		line-height: 28.8px;
 	}
+    
+    .news-list-item-footer-strawberry {
+    margin-left: 0;
+    }
 }
 </style>

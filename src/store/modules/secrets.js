@@ -1,5 +1,5 @@
 import shopSecrets from '../../api/shopSecrets'
-
+import  axios from 'axios'
 // initial state
 const state = {
   all: [],
@@ -31,6 +31,27 @@ const actions = {
       commit('setLoading', false);
     }) 
     commit('setLastSecret', lastSecret+6)
+  },
+  getAllSecrets ({ commit, state }, lastIdSecret) {
+    commit('setLoading', true);
+    const url = 'http://orenburg.io/api/v1/secrets?lastSecrets=' + lastIdSecret
+    axios.get(url)
+    .then(response =>{
+        console.log(response)
+        commit('setLoading', false)
+        commit('setSecrets', response.data);
+        commit('setLastSecret', lastIdSecret+30)
+        //this.users = this.users.concat(response.data)
+        //this.loading = false
+        //this.count = this.count + 10
+        //this.first = this.first + 1
+    })
+    .catch(e => {
+        console.log(e.message)
+        commit('setLoading', false)
+        //this.error = true
+        //this.loading = false
+    });
   }
 }
 
