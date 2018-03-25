@@ -1,0 +1,169 @@
+<template>
+    <div class="range">
+        <span class="rande-label"> Рейтинг от </span> <span id="rangeValue">{{ range }}</span>
+        <input type="range" min="-50" max="100" step="50" list="rangeList" :value="range" v-on:change="setValue">
+        <datalist id="rangeList">
+            <option value="-50" label="50"></option>
+            <option value="0" label="0"></option>
+            <option value="50" label="50"></option>
+            <option value="100" label="100"></option>
+        </datalist>
+    </div>
+</template>
+
+<script>
+import { mapGetters} from 'vuex'
+
+export default {
+    props: ['type'],
+    computed: { 
+        ...mapGetters({
+        // range: 'getValue(this.type)'
+        }),
+        range(){
+            return this.$store.getters.getValue(this.type)
+        }
+    },
+    methods: {
+        setValue (e) {
+            console.log(this.type)
+            
+            // this.$store.dispatch('setRange',  () => { return e.target.value, this.type })
+            this.$store.dispatch('setRange',  () => { return e.target.value, this.type } )
+        } 
+    }
+}
+</script>
+
+<style>
+input[type=range]{
+    -webkit-appearance: none; 
+       -moz-appearance: none;
+            appearance: none;
+        
+    border: none; /* FF */
+    width: 100px; /* FF */
+    padding: 0; /* IE */
+	background-color: inherit;
+	cursor: pointer;
+	margin: 0;
+}
+
+input[type=range]:focus {
+    outline: none;
+} 
+
+#rangeValue {
+	display: inline-block;
+	width: 30px;
+	color: rgba(36, 122, 134, .8);
+}
+
+.range {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+/*	height: 36px;*/
+}
+
+.rande-label {
+	padding-right: 5px;
+}
+/*Для webkit-браузеров*/
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100px;
+    height: 12px;
+    background: #ddd;
+    border: none;
+    border-radius: 6px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #247A86;
+    margin-top: -4px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+	background: #ddd;
+    
+}
+
+/*Для браузера Forefox*/
+
+input[type=range]::-moz-range-track {
+    width: 100px;
+    height: 12px;
+    background: #ddd;
+    border: none;
+    border-radius: 6px;
+}
+
+input[type=range]::-moz-range-thumb {
+    border: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #247A86;
+}
+
+input[type=range]:-moz-focusring{
+    outline: 1px solid white;
+    outline-offset: -1px;
+}
+
+input[type=range]:focus::-moz-range-track {
+/*    background: #ccc;*/
+}
+
+input[type=range]::-moz-range-progress { 
+   background: #ccc;
+   background: rgba(36, 122, 134, .3);
+   height: 12px;
+   border-radius: 6px;
+}
+
+/*Для браузера IE10 +*/
+
+input[type=range]::-ms-track {
+    width: 100px;
+    height: 10px;
+    background: transparent;
+    border-color: transparent;
+    border-width: 11px 0;
+    color: transparent;
+}
+
+ input[type=range]::-ms-fill-lower {
+	background: rgba(36, 122, 134, 0.3);
+    border-radius: 10px;
+}
+
+input[type=range]::-ms-fill-upper {
+	background: rgba(36, 122, 134, 0.3);
+    border-radius: 10px;
+}
+
+input[type=range]::-ms-thumb {
+    border: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #247A86;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+	background: rgba(36, 122, 134, 0.3);
+}
+
+input[type=range]:focus::-ms-fill-upper {
+    background: #ccc;
+}
+
+</style>

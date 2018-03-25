@@ -1,7 +1,7 @@
 <template>
 <div class="news">
 	<ul class="news-list" >
-		<li class="news-list-item" v-for="secret in secrets">
+		<li class="news-list-item" v-for="secret in secrets" :key="secret.id">
 			<article>
         <div class="news-list-item-footer-rating-left">
             <div class="news-list-item-footer-rating-up">
@@ -160,10 +160,10 @@ export default {
         listScrollHeight = document.body.scrollHeight
         let listOffsetHeight = document.documentElement.clientHeight
         let diffHeight = listScrollHeight - listOffsetHeight
-        console.log(diffHeight)
-        console.log(scrollTop)
-        console.log(listScrollHeight)
-        console.log(listOffsetHeight)
+        // console.log(diffHeight)
+        // console.log(scrollTop)
+        // console.log(listScrollHeight)
+        // console.log(listOffsetHeight)
 //        if (diffHeight <= (scrollTop+40) && !loading && !error) {
 //            this.$store.dispatch('getSecrets', lastSecret)
 //        }
