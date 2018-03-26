@@ -24,12 +24,16 @@ export default {
             return this.$store.getters.getValue(this.type)
         }
     },
+    beforeCreate() {
+         this.$store.dispatch('initialiseStore')
+    },
     methods: {
         setValue (e) {
-            console.log(this.type)
-            
-            // this.$store.dispatch('setRange',  () => { return e.target.value, this.type })
-            this.$store.dispatch('setRange',  () => { return e.target.value, this.type } )
+            let qwe = {
+                val: Number(e.target.value),
+                type: this.type
+            }
+            this.$store.dispatch('setRange',  qwe )
         } 
     }
 }

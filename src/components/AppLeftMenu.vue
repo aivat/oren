@@ -152,7 +152,7 @@
                   <h3 class="left-menu-wrap-caption">Настройки</h3>
                     <ul class="left-menu-wrap-list">
                       <li class="left-menu-wrap-list-range">
-                        <Range type="secrets"></Range>
+                        <Range v-bind:type="this.$route.name"></Range>
                       </li>
                       <li>
                         <a href="#" class="left-menu-wrap-list-href">
@@ -173,9 +173,6 @@
       <div class="left-menu-footer">
         <div class="left-menu-wrap">
             <ul class="left-menu-wrap-list">
-              <li class="left-menu-wrap-list-range">
-                  <Range type="news"></Range>
-              </li>
               <li>
                   <a href="#" class="left-menu-wrap-list-href">
                     <div class="left-menu-wrap-list-href-label left-menu-wrap-list-href-label-footer">

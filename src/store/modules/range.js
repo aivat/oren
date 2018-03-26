@@ -2,60 +2,36 @@
 //   value: -50
 // }
 const range = {
-    state () {
-      return {
-        secrets: 0,
-        news: -50
-      }
+    state: {
+        secrets: -50,
+        news: 50
     },
     getters: {
-        // getValue(state, { type } ){
-        //     return state[type]
-        // } 
         getValue: (state) => (type) => {
             return state[type]
           }
     }, 
     actions: {
-        setRange ({ commit },  rangeValue, type ) {
-            console.log( rangeValue +'=' + type)
-        commit('setRange', { typeItem: type, itemValue: rangeValue });
+      setRange ({ commit },  rangeValue) {
+        commit('setRange', { typeItem: rangeValue.type, itemValue: rangeValue.val });
+      },
+      initialiseStore({ commit }, state) {
+        if(localStorage.getItem('store')) {
+          commit ('setRangeFromLocalStorage', JSON.parse(localStorage.getItem('store')))
+        }
       }
     },  
     mutations: {
         setRange (state, { typeItem, itemValue }) {
           state[typeItem] = itemValue
+          localStorage.setItem('store', JSON.stringify(state))
+        },
+        setRangeFromLocalStorage (state, storeFromLocalStorage) {
+          state.secrets = storeFromLocalStorage.secrets
+          state.news = storeFromLocalStorage.news
         }
     }
 }
-// const state = () => {
-//     return {
-//         value: -50
-//     }
-// }
-
-// const getters = {
-//   getValue: (state) => state.value
-// }
-
-// const actions = {
-//   setRange ({ commit }, rangeValue) {
-//     commit('setRange', rangeValue);
-//   }
-// }
-
-// const mutations = {
-//   setRange (state, rangeValue) {
-//     state.value = rangeValue;
-//   }
-// }
-
-// export default {
-//   state,
-//   getters,
-//   actions,
-//   mutations
-// }
 
 export default  range
 

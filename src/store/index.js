@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 //import cart from './modules/cart'
 import secrets from './modules/secrets'
 import range from './modules/range'
+import rangeLocal from './plugins/rangeLocal'
 //import createLogger from '../../../src/plugins/logger'
 
 Vue.use(Vuex)
@@ -15,5 +16,17 @@ export default new Vuex.Store({
     range
   },
   strict: debug
+  // plugins: [rangeLocal],
+  // mutations: {
+  //   initialiseStore(state) {
+  //     console.log(JSON.parse(localStorage.getItem('store')))
+  //     if(localStorage.getItem('store')) { 
+  //       this.replaceState(
+  //         Object.assign(state, JSON.parse(localStorage.getItem('store')))
+  //       );
+  //     }
+  //   }
+  // }
+
   //plugins: debug ? [createLogger()] : []
 })

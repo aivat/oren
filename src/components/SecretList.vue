@@ -1,7 +1,7 @@
 <template>
 <div class="news">
 	<ul class="news-list" >
-		<li class="news-list-item" v-for="secret in secrets" :key="secret.id">
+		<li class="news-list-item" v-for="secret in secrets">
 			<article>
         <div class="news-list-item-footer-rating-left">
             <div class="news-list-item-footer-rating-up">
