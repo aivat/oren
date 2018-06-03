@@ -42,8 +42,11 @@ body {
   font-weight: 400;
   height: 100%;
   background-color:rgb(241, 241, 241);
+  /* src: require('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'); */
+  /* font-family: 'Open Sans',sans-serif; */
   font-family: Roboto, RobotoDraft, Helvetica, Arial;
   src: url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
+  
 }
 
 .container {
@@ -124,7 +127,8 @@ body {
   .c2 {
     top: 56px;
     /* position: static; */
-    position: relative;    
+    position: relative;  
+    /* width:  600px;  */
   }
 
     .c1, .c2, .c3 {
@@ -140,13 +144,20 @@ body {
 @media (min-width: 800px) {
   body {
     overflow-x: auto;
-	  background-color:rgb(241, 241, 241);
+	  background-color:rgb(250, 250, 250);
+    background-color: rgba(255, 255, 255);
+    /* background-color: rgba(255, 255, 255, 0.596); */
   }
 	.container {
-		 background-color:rgb(241, 241, 241);
+		 background-color:rgba(241, 241, 241, 0.815);
+     background-color: rgba(255, 255, 255);
+
+     /* background-color:rgb(250, 250, 250); */
 	}
 	.c1, .c2 {
 		background-color:rgb(241, 241, 241);
+    background-color: rgba(255, 255, 255);
+    /* background-color:rgb(250, 250, 250); */
 		
 	}
 	.news-list-item {
@@ -168,10 +179,14 @@ body {
 @media (min-width: 1300px) {
     .container {
         justify-content: center;
+        /* justify-content: space-between; */
+    }
+    .c1 {
+      margin-right: 40px;
     }
     .c2 {
        width: 720px;
-		margin-left: 0;
+		  margin-left: 0;
     }
 }
   

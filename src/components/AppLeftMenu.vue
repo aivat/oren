@@ -279,14 +279,18 @@ export default {
 .left-menu-wrap-caption {
     padding: 10px 20px;
 /*    background-color: rgba(189, 196, 202, 0.1);*/
-    font-size: 14px;
+    font-size: 15px;
+    border-radius: 0 18px 18px 0;
     font-weight: 600;
     margin-top: 0;
     margin-bottom: 0;
 	color: rgba(0,0,0,0.7);
 	opacity: .85;
-	font-weight: 600;
+	font-weight: 500;
 	background-color: rgba(189, 196, 202, 0.2);
+  background-color: rgba(66, 133, 244, 0.15);
+  /* background-color: rgba(66,133,244,0.149); */
+  color: #4285f4;
 }
 
 
@@ -314,12 +318,14 @@ export default {
     color: rgba(0,0,0,0.87);
     color: #656565;
 	color: #757575;
+  color:rgb(60, 64, 67);
+      color: #676767;
     font-size: 14px;
     height: 48px;
     font-weight: 400;
     opacity: 1;
     line-height: 50px;
-    border-radius: 2px;
+    border-radius: 0 24px 24px 0;
     overflow: hidden;
     display: flex;
     -webkit-transition: background-color .3s cubic-bezier(0,0,0.2,1);
@@ -327,11 +333,15 @@ export default {
 }
 
 .left-menu-wrap-list-href:hover {
-	background-color: #e7e7e7;
-    color: #247A86;
+	/* background-color: #e7e7e7;
+  background-color: rgba(66, 133, 244, 0.15); */
+  color: #247A86;
+  color: #4285f4;
 }
 .left-menu-wrap-list-href:hover .left-menu-wrap-list-href-svg {
     color: #247A86;
+    color: #4285f4;
+    color: rgba(66, 133, 244, 1);
 }
 .left-menu-wrap-list-href-svg {
 	font-weight: 300;
