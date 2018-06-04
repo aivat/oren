@@ -148,27 +148,51 @@
                   </li>
                   </ul>
                 </div>
-                <div class="left-menu-wrap">
-                  <h3 class="left-menu-wrap-caption">Настройки</h3>
-                    <ul class="left-menu-wrap-list">
-                      <li class="left-menu-wrap-list-range">
-                        <Range v-bind:type="this.$route.name"></Range>
-                      </li>
-                      <li>
-                        <a href="#" class="left-menu-wrap-list-href">
-                          <div class="left-menu-wrap-list-href-svg">
-                            <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="svg-active">
-                              <circle cx="9" cy="9" r="4"/>
-                              <path d="M9 15c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4zm7.76-9.64l-1.68 1.69c.84 1.18.84 2.71 0 3.89l1.68 1.69c2.02-2.02 2.02-5.07 0-7.27zM20.07 2l-1.63 1.63c2.77 3.02 2.77 7.56 0 10.74L20.07 16c3.9-3.89 3.91-9.95 0-14z"/>
-                            </svg>
-                          </div>
-                          <div class="left-menu-wrap-list-href-label">
-                            Подслушано
-                          </div>
-                        </a>	
-                      </li>
-                    </ul>
-                </div> 
+      </div>
+      <div class="left-menu-content">
+          <div class="left-menu-wrap">
+            <h3 class="left-menu-wrap-caption">Настройки</h3>
+              <ul class="left-menu-wrap-list">
+                <li>
+                  <div class="left-menu-wrap-list-href">
+                    <div class="left-menu-wrap-list-href-svg">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M10 2c-1.82 0-3.53.5-5 1.35C7.99 5.08 10 8.3 10 12s-2.01 6.92-5 8.65C6.47 21.5 8.18 22 10 22c5.52 0 10-4.48 10-10S15.52 2 10 2z"/>
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                    </svg>
+                    </div>
+                    <div class="left-menu-wrap-list-href-label label-setting">
+                        Ночной режим
+                    </div>
+                    <div class="rande-label-wrap">
+                      <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
+                        <label class="onoffswitch-label" for="myonoffswitch"></label>
+                      </div>
+                    </div>
+                  </div>	
+                </li>                
+                <li>
+                  <div class="left-menu-wrap-list-href">
+                    <div class="left-menu-wrap-list-href-svg">
+                      <span class="rande-label">18+</span>
+                    </div>
+                    <div class="left-menu-wrap-list-href-label label-setting">
+                        Контент
+                    </div>
+                    <div class="rande-label-wrap">
+                      <div class="onoffswitch">
+                        <input type="checkbox" name="switchAge" class="onoffswitch-checkbox" id="switchAge">
+                        <label class="onoffswitch-label" for="switchAge"></label>
+                      </div>
+                    </div>
+                  </div>	
+                </li>
+                <li class="left-menu-wrap-list-range">
+                  <Range v-bind:type="this.$route.name"></Range>
+                </li>
+              </ul>
+          </div> 
       </div>
       <div class="left-menu-footer">
         <div class="left-menu-wrap">
@@ -201,30 +225,25 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .orenburg-online-wrap {
 	display: flex;
-	color: #009687;
-/*	flex-direction: column;*/
 	align-items: flex-end;
 	font-weight: 500;
+  height: 48px;
+  line-height: 50px;
+  color: black;
+  color: rgb(123,133,142);
+  /* line-height: 50px; */
 }
 .orenburg-online {
 	text-decoration: none;
-/*	color: rgba(189, 196, 202, 1);*/
-	color: #676767;
-	color: maroon;
 	padding-left: 20px;
-/*	line-height: 50px;*/
 }
 .orenburg-online-online {
 	position: relative;
 	font-size: 12px;
-	top: -2px;
-/*
-	top: -35px;
-	left: 50px;
-*/
+	top: 2px;
 }
 .instoren {
 	color: dodgerblue;
@@ -277,6 +296,7 @@ export default {
     border-bottom: none;
 }
 .left-menu-wrap-caption {
+  display: none;
     padding: 10px 20px;
 /*    background-color: rgba(189, 196, 202, 0.1);*/
     font-size: 15px;
@@ -319,10 +339,13 @@ export default {
     color: #656565;
 	color: #757575;
   color:rgb(60, 64, 67);
+ 
       color: #676767;
+    color: rgb(123,133,142);
+       /* color: #000; */
     font-size: 14px;
     height: 48px;
-    font-weight: 400;
+    font-weight: 500;
     opacity: 1;
     line-height: 50px;
     border-radius: 0 24px 24px 0;
@@ -350,6 +373,7 @@ export default {
     height: inherit;
     flex: none;
     color: rgba(0, 0, 0, 0.25);
+    color: rgb(123,133,142);
 /*    color: #757575;*/
 }
 
@@ -393,7 +417,54 @@ export default {
     border-radius: 2px;
     display: flex;
 }
-
+.onoffswitch {
+    position: relative; width: 35px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+    /* display: flex;
+    align-items: center; */
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    height: 12px; padding: 0; line-height: 12px;
+    border: 0px solid #ddd; border-radius: 12px;
+    background-color: #ddd;
+    transition: background-color 0.3s ease-in;
+}
+.onoffswitch-label:before {
+    content: "";
+    display: block; width: 16px; margin: 0px;  height: 16px;
+    background: #FFFFFF;
+    position: absolute; top: -4px; bottom: 0;
+    right: 17px;
+    border: 2px solid #ddd; 
+	border-radius: 50%;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label {
+    background-color: rgba(36, 122, 134, .3);
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+   border-color: #247A86;
+   background: #247A86;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+    right: 0px; 
+}
+.rande-label {
+  font-weight: 700;
+}
+.rande-label-wrap {
+  display: flex;
+  align-items: center;
+  margin-right: 25px;
+  /* margin-left: 75px; */
+}
+.label-setting {
+  display: inline-block;
+}
 @media (min-width: 500px) {
     .header-logo-href-close {
         display: none;

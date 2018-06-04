@@ -1,7 +1,7 @@
 <template>
   <div class="container" id="app">
     <AppHeader/>
-    <div class="c1" id="c1">
+    <div class="c1" id="c1" v-bind:class="{ open: isActive }">
       <AppLeftMenu/>
     </div>
     <div class="c2">
@@ -18,10 +18,156 @@
 import SecretList from './components/SecretList'
 import AppHeader from './components/AppHeader'
 import AppLeftMenu from './components/AppLeftMenu'
+// import 'C:\OSPanel\domains\orenburg.io\script'
 
 export default {
   name: 'app',
-  components: { SecretList, AppHeader, AppLeftMenu}  
+  data () {
+    return {
+      detecting: false, isActive: false,
+      started: false, leftPage: false, rightPage: false, openMenuLeft: false, startedScrollLeftMenu: false,
+      x: 0, y: 0, newX: 0, newY: 0, delta: 0,
+      touch: null, newTouch: null
+    }
+  },
+  components: { 
+    SecretList,
+    AppHeader,
+    AppLeftMenu
+  },
+  created () {
+    window.addEventListener('touchstart', this.handleTouchStart, { passive: false }),
+    window.addEventListener('touchmove', this.handleTouchMove, { passive: false }),
+    window.addEventListener('touchend', this.handleTouchEnd, { passive: false })
+    // window.addEventListener('touchstart', this.handleTouchStart),
+    // window.addEventListener('touchmove', this.handleTouchMove),
+    // window.addEventListener('touchend', this.handleTouchEnd)
+  },
+  destroyed () {
+    window.removeEventListener('touchstart', this.handleTouchStart),
+    window.removeEventListener('touchmove', this.handleTouchMove),
+    window.removeEventListener('touchend', this.handleTouchEnd)
+  },
+  methods: {
+    handleTouchStart(event) {
+      if (event.touches.length != 1 || this.started) {
+          return;
+      }
+      this.detecting = true;
+      this.touch = event.changedTouches[0];
+      console.log(this.touch);
+      this.x = this.touch.pageX;
+      this.y = this.touch.pageY;
+      if (this.openMenuLeft) {
+          if (this.x > 251 ) {
+              event.preventDefault()
+              this.isActive = false
+              
+              // closeMenu();
+          } else {
+              //event.preventDefault();
+          }
+      }
+    },
+    handleTouchMove(event) {
+      if (!this.started && !this.detecting && !this.startedScrollLeftMenu) {
+        return
+      }
+
+      this.newTouch = event.changedTouches[0];
+      this.newX = this.newTouch.pageX;
+      this.newY = this.newTouch.pageY;
+
+      if (this.detecting) {
+        this.detect(event);
+      }
+
+      if (this.started) {
+        this.draw(event);
+      }
+    },
+    detect() {
+      /*
+        Получаем сохраненное ранее касание из changedTouches. Если среди касаний нет нашего, значит, пользователь коснулся экрана еще одним пальцем. На это касание реагировать не надо
+      */ 
+      if (event.touches.length != 1){
+            console.log('event.changedTouches=', event.changedTouches);
+        return;
+      }
+      /*
+        Самым простым способом определения того, хотел ли пользователь перелистнуть страницу, является сравнение смещений пальца по осям. 
+        Если смещение больше по оси х, чем по у, значит, пользователь листает.
+      */
+      if (Math.abs(this.x - this.newX) >= Math.abs(this.y - this.newY)){
+        /*
+          Если не отменить поведение по умолчанию, то второго touchmove может и не быть (например, в Android). Поэтому необходимо определить swipe с первого раза и отменить поведение по умолчанию – скроллинг страницы
+        */
+        event.preventDefault();
+        // Запоминаем, что началось перелистывание
+        this.started = true;
+      } else {
+            //event.preventDefault();
+            this.startedScrollLeftMenu = true;
+            //console.log("startedScrollLeftMenu22=", startedScrollLeftMenu);
+            //console.log("openMenuLeft22=",openMenuLeft);
+        }
+
+      // В любом случае заканчиваем определение, т.к. шанс определить у нас один
+      this.detecting = false;
+    },
+    draw() {
+      /*
+        Отменяем поведение по умолчанию, дабы в дальнейшем срабатывали обработчики touchmove и не срабатывал скролл
+      */
+      event.preventDefault();
+
+      /*
+        Получаем сохраненное ранее касание из changedTouches. Если среди касаний нет нашего, значит, пользователь коснулся экрана еще одним пальцем. На это касание реагировать не надо
+      */
+      if (event.touches.length != 1){
+            console.log('даdraw');
+        return;
+      }
+
+      /*
+        Вычисляем смещение пальца относительно исходных координат касания.
+        На эту величину надо сместить страницу, чтобы она «следовала» за пальцем
+      */
+      this.delta = this.x - this.newX;
+        console.log('delta=', this.delta);
+      /*
+        Если листать некуда, делим смещение на некоторую величину для создания визуального эффекта «сопротивления движению» страницы.
+        Таким образом, даем пользователю понять, что дальше страниц нет
+      */
+      if (this.delta > 0 && !this.leftPage || this.delta < 0 && !this.rightPage){
+        this.delta = this.delta / 5;
+      }
+
+      // Отрисовываем смещение, о чем чуть позже
+    //	moveTo(delta);
+    },
+    handleTouchEnd(event) {
+      if (!this.started){
+        return;
+    }
+    
+    event.preventDefault();
+    this.started = false;
+    this.startedScrollLeftMenu = false;
+    if (this.delta > 0) {
+        this.openMenuLeft = false;
+        this.isActive = false
+        // closeMenu();
+    } else {
+        this.openMenuLeft = true;
+        this.isActive = true;
+        // openMenu();
+    }
+    
+    this.x, this.y, this.newX, this.newY, this.delta = 0;
+    console.log('delta2=', this.delta);
+    }
+  }
 }
 </script>
 
@@ -34,7 +180,9 @@ export default {
 .fade-enter, .fade-leave-active {
 opacity: 0;
 }
-
+.touchAct {
+  pointer-events: none;
+}
 body {
   overflow-x: hidden;
   margin: 0;
@@ -94,6 +242,7 @@ body {
 .c1.open {
     -webkit-transform: translate(0,0);
     transform: translate(0,0);
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2);
 }
 
 .c3.open {

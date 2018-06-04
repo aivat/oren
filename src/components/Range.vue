@@ -1,5 +1,14 @@
 <template>
     <div class="range">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <path id="a" d="M0 0h24v24H0V0z"/>
+    </defs>
+    <clipPath id="b">
+        <use xlink:href="#a" overflow="visible"/>
+    </clipPath>
+    <path clip-path="url(#b)" d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4V6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/>
+</svg>
         <span class="rande-label"> Рейтинг от </span> <span id="rangeValue">{{ range }}</span>
         <input type="range" min="-50" max="100" step="50" list="rangeList" :value="range" v-on:change="setValue">
         <datalist id="rangeList">
@@ -69,8 +78,12 @@ input[type=range]:focus {
 	justify-content: space-between;
 /*	height: 36px;*/
 }
-
+.range > svg {
+    padding-right: 22px;
+}
 .rande-label {
+    color: rgb(123,133,142);
+    font-weight: 500;
 	padding-right: 5px;
 }
 /*Для webkit-браузеров*/

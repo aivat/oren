@@ -97,10 +97,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .orenburg-online-wrap {
 	display: flex;
-	color: #009687;
+	/* color: #009687; */
 /*	flex-direction: column;*/
 	align-items: flex-end;
 	font-weight: 500;
@@ -108,8 +108,8 @@ export default {
 .orenburg-online {
 	text-decoration: none;
 /*	color: rgba(189, 196, 202, 1);*/
-	color: #676767;
-	color: maroon;
+	/* color: #676767;
+	color: maroon; */
 	padding-left: 20px;
 /*	line-height: 50px;*/
 }

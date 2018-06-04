@@ -1,7 +1,7 @@
 <template>
 <div class="news">
 	<ul class="news-list" >
-		<li class="news-list-item" v-for="secret in secrets">
+		<li class="news-list-item" v-for="secret in secrets" :key="secret.id">
 			<article>
         <div class="news-list-item-footer-rating-left">
             <div class="news-list-item-footer-rating-up">
@@ -155,15 +155,21 @@ export default {
   methods: {
         handleScroll (event) {
         // почему так высчитывается так до конца и не разобрался, но математическим путем опряделяется верно. 40 пиксей добавил, чтобы загрузка происхода еще до прокрутки до самого низа
-        let scrollTop = window.pageYOffset,
-        //listOffsetHeight = document.body.offsetHeight,
-        listScrollHeight = document.body.scrollHeight
+        let scrollTop = window.pageYOffset
+        // let listOffsetHeight = document.body.offsetHeight
+        let listScrollHeight = document.body.scrollHeight
         let listOffsetHeight = document.documentElement.clientHeight
-        let diffHeight = listScrollHeight - listOffsetHeight
-        // console.log(diffHeight)
-        // console.log(scrollTop)
-        // console.log(listScrollHeight)
-        // console.log(listOffsetHeight)
+        // let diffHeight = listScrollHeight - listOffsetHeight
+        let scrollHeight = Math.max(
+            document.body.scrollHeight, document.documentElement.scrollHeight,
+            document.body.offsetHeight, document.documentElement.offsetHeight,
+            document.body.clientHeight, document.documentElement.clientHeight
+        );
+        let diffHeight = scrollHeight - listOffsetHeight
+        // console.log('diffHeight=',diffHeight)
+        // console.log('scrollTop=',scrollTop)
+        // console.log('scrollHeight=',scrollHeight)
+        // console.log('listOffsetHeight=',listOffsetHeight)
 //        if (diffHeight <= (scrollTop+40) && !loading && !error) {
 //            this.$store.dispatch('getSecrets', lastSecret)
 //        }
