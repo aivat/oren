@@ -9,7 +9,7 @@
     </clipPath>
     <path clip-path="url(#b)" d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4V6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/>
 </svg>
-        <span class="rande-label"> Рейтинг от </span> <span id="rangeValue">{{ range }}</span>
+        <span class="rande-label"> Рейтинг</span> <span id="rangeValue">{{ range }}</span>
         <input type="range" min="-50" max="100" step="50" list="rangeList" :value="range" v-on:change="setValue">
         <datalist id="rangeList">
             <option value="-50" label="50"></option>
@@ -55,7 +55,7 @@ input[type=range]{
             appearance: none;
         
     border: none; /* FF */
-    width: 100px; /* FF */
+    width: 80px; /* FF */
     padding: 0; /* IE */
 	background-color: inherit;
 	cursor: pointer;
@@ -70,6 +70,7 @@ input[type=range]:focus {
 	display: inline-block;
 	width: 30px;
 	color: rgba(36, 122, 134, .8);
+    padding-right: 10px;
 }
 
 .range {
@@ -79,17 +80,18 @@ input[type=range]:focus {
 /*	height: 36px;*/
 }
 .range > svg {
-    padding-right: 22px;
+    padding-right: 18px;
+    fill:rgb(123,133,142);
 }
 .rande-label {
     color: rgb(123,133,142);
     font-weight: 500;
-	padding-right: 5px;
+	padding-right: 20px;
 }
 /*Для webkit-браузеров*/
 
 input[type=range]::-webkit-slider-runnable-track {
-    width: 100px;
+    width: 80px;
     height: 12px;
     background: #ddd;
     border: none;
@@ -115,7 +117,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 /*Для браузера Forefox*/
 
 input[type=range]::-moz-range-track {
-    width: 100px;
+    width: 80px;
     height: 12px;
     background: #ddd;
     border: none;
@@ -149,7 +151,7 @@ input[type=range]::-moz-range-progress {
 /*Для браузера IE10 +*/
 
 input[type=range]::-ms-track {
-    width: 100px;
+    width: 80px;
     height: 10px;
     background: transparent;
     border-color: transparent;
@@ -182,5 +184,12 @@ input[type=range]:focus::-ms-fill-lower {
 input[type=range]:focus::-ms-fill-upper {
     background: #ccc;
 }
-
+@media (min-width: 800px) {
+    #rangeValue {
+        padding-right: 5px;
+    }
+    .rande-label {
+        padding-right: 10px;
+    }
+}
 </style>

@@ -4,6 +4,7 @@ import Hello from '@/components/Hello'
 import AppHeader from '../components/AppHeader'
 import SecretList from '../components/SecretList'
 import NewsList from '../components/NewsList'
+import AppHot from '../components/AppHot'
 
 Vue.use(Router)
 
@@ -16,14 +17,20 @@ export default new Router({
       component: AppHeader
     },
     {
-      path: '/secrets',
-      name: 'secrets',
-      component: SecretList
-    },
-    {
       path: '/news',
       name: 'news',
       component: NewsList
+    },
+    {
+      path: '/hot',
+      name: 'hot',
+      component: AppHot
+    },
+    {
+      path: '/secrets',
+      name: 'secrets',
+      component: SecretList
     }
+
   ]
 })

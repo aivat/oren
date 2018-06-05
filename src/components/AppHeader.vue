@@ -33,7 +33,7 @@
                 </router-link>
             </div>
             <div class="header-item">
-                <a href="#" class="header-item-href">
+                <router-link to="/hot" class="header-item-href" active-class="header-item-href-active">
                     <div class="header-item-svg">
                         <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/>
@@ -43,9 +43,9 @@
                     <div class="header-item-text">
                         Лучшее
                     </div>
-                </a>
+                </router-link>
             </div>
-            <div class="header-item header-item-active">
+            <div class="header-item">
                 <router-link to="/secrets" class="header-item-href" active-class="header-item-href-active">
                     <div class="header-item-svg">
                         <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="svg-active">
@@ -53,7 +53,7 @@
                             <path d="M9 15c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4zm7.76-9.64l-1.68 1.69c.84 1.18.84 2.71 0 3.89l1.68 1.69c2.02-2.02 2.02-5.07 0-7.27zM20.07 2l-1.63 1.63c2.77 3.02 2.77 7.56 0 10.74L20.07 16c3.9-3.89 3.91-9.95 0-14z"/>
                         </svg>
                     </div>
-                    <div class="header-item-text header-item-text-active">
+                    <div class="header-item-text">
                         Подслушано
                     </div>
                 </router-link>
@@ -85,7 +85,7 @@
 </template>
 
 <script>
-import { router } from '../main.js'
+// import { router } from '../main.js'
 
 export default {
     data () {
@@ -148,6 +148,7 @@ export default {
 
 svg {
     fill: #676767;
+    fill: rgb(123,133,142);
 }
 .svg-active {
     fill: #db4437;
@@ -214,12 +215,19 @@ svg {
         text-decoration: none;
         align-items: center;
 		color: #676767;
+        color: rgb(123,133,142);
 		height: 100%;
 		width: 50px;
 		justify-content: center;
-		
+		border-top: 3px solid transparent;
+		/* border-bottom: 3px solid currentColor; */
+        box-sizing: border-box;
     }
-	.header-item-href:hover:not(.header-item-href-active) {
+    .header-item-href:hover:not(.header-item-href-active) {
+        color: rgba(66, 133, 244, 1);
+        border-top: 3px solid rgba(66, 133, 244, 1);
+    }
+	/* .header-item-href:hover:not(.header-item-href-active) {
 		color: #247A86;
 	}
 	
@@ -227,9 +235,10 @@ svg {
 		color: #009687;
 		border-top: 3px solid currentColor;
 		border-bottom: 3px solid rgb(40,46,51);
-	}
+	} */
 	.header-item-href-active {
 		color: #db4437;
+        border-top: 3px solid #db4437;
 	}
 	.header-item-href svg {
 		fill: currentColor;
@@ -241,8 +250,8 @@ svg {
         height: 100%;
         display: flex;
         align-items: center;
-        border-top: 3px solid currentColor;
-		border-bottom: 3px solid currentColor;
+        /* border-top: 3px solid currentColor;
+		border-bottom: 3px solid currentColor; */
         box-sizing: border-box;        
     }
 	.header-item-text {
@@ -254,15 +263,15 @@ svg {
 	.header-item-svg {
 		height: 24px;
 	}
-    .header-item-active {
+    /* .header-item-active {
         border-top: 3px solid #db4437;
-    }
-	.header-item-text-active {
+    } */
+	/* .header-item-text-active {
 		color: #db4437;
-	}
-    .header-item:hover:not(.header-item-active) {
+	} */
+    /* .header-item:hover:not(.header-item-active) {
         border-top: 3px solid #247A86;
-    }
+    } */
 
 	.header-logo,.header-login {
 		height: 100%;
@@ -301,9 +310,9 @@ svg {
         padding-left: 10px;
 /*        color: black;    */
     }
-	.header-item-text-active {
+	/* .header-item-text-active {
 		color: #db4437;
-	}
+	} */
 	svg {
     	fill: black;
 	}

@@ -484,11 +484,20 @@ export default {
 	.orenburg-online-wrap-night {
 		color: #009687;
 	}
+  .label-setting {
+    /* padding-right: 45px; */
+  }
+  .rande-label-wrap {
+    margin-right: 0px;
+  }
 }
 
 @media (min-width: 1050px) {
 	.left-menu {
 		width: 250px;
 	}
+  .rande-label-wrap {
+    margin-right: 10px;
+  }
 }
 </style>
