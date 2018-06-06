@@ -4,6 +4,8 @@ import Vuex from 'vuex'
 import secrets from './modules/secrets'
 import range from './modules/range'
 import rangeLocal from './plugins/rangeLocal'
+import openMenu from './modules/openMenu'
+
 //import createLogger from '../../../src/plugins/logger'
 
 Vue.use(Vuex)
@@ -13,7 +15,8 @@ const debug = process.env.NODE_ENV !== 'production'
 export default new Vuex.Store({
   modules: {
     secrets,
-    range
+    range,
+    openMenu
   },
   strict: debug
   // plugins: [rangeLocal],

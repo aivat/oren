@@ -325,6 +325,7 @@ export default {
 
 .left-menu-wrap-list>li {
     list-style-type: none;
+    display: block;
 /*    padding: 10px 40px;*/
 }
 

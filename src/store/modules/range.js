@@ -13,7 +13,7 @@ const range = {
     }, 
     actions: {
       setRange ({ commit },  rangeValue) {
-        commit('setRange', { typeItem: rangeValue.type, itemValue: rangeValue.val });
+        commit('setRange', { typeItem: rangeValue.type, itemValue: rangeValue.val })
       },
       initialiseStore({ commit }, state) {
         if(localStorage.getItem('store')) {

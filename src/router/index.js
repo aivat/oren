@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
 import AppHeader from '../components/AppHeader'
 import SecretList from '../components/SecretList'
 import NewsList from '../components/NewsList'
 import AppHot from '../components/AppHot'
+import AppOrenburg from '../components/AppOrenburg'
 
 Vue.use(Router)
 
@@ -13,8 +13,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'header',
-      component: AppHeader
+      name: '',
+      component: NewsList
     },
     {
       path: '/news',
@@ -30,6 +30,11 @@ export default new Router({
       path: '/secrets',
       name: 'secrets',
       component: SecretList
+    },
+    {
+      path: '/orenburg',
+      name: 'orenburg',
+      component: AppOrenburg
     }
 
   ]

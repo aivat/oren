@@ -9,7 +9,7 @@
     </clipPath>
     <path clip-path="url(#b)" d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4V6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/>
 </svg>
-        <span class="rande-label"> Рейтинг</span> <span id="rangeValue">{{ range }}</span>
+        <span class="rande-label">Рейтинг</span><span id="rangeValue">{{ range }}</span>
         <input type="range" min="-50" max="100" step="50" list="rangeList" :value="range" v-on:change="setValue">
         <datalist id="rangeList">
             <option value="-50" label="50"></option>
@@ -29,7 +29,7 @@ export default {
         ...mapGetters({
         // range: 'getValue(this.type)'
         }),
-        range(){
+        range() {
             return this.$store.getters.getValue(this.type)
         }
     },
@@ -48,7 +48,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 input[type=range]{
     -webkit-appearance: none; 
        -moz-appearance: none;
@@ -76,8 +76,6 @@ input[type=range]:focus {
 .range {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-/*	height: 36px;*/
 }
 .range > svg {
     padding-right: 18px;

@@ -1,7 +1,8 @@
 <template>
   <div class="container" id="app">
     <AppHeader/>
-    <div class="c1" id="c1" v-bind:class="{ open: isActive }">
+    <div class="c1" id="c1" v-bind:class="{ open: isOpen }">
+      
       <AppLeftMenu/>
     </div>
     <div class="c2">
@@ -18,17 +19,30 @@
 import SecretList from './components/SecretList'
 import AppHeader from './components/AppHeader'
 import AppLeftMenu from './components/AppLeftMenu'
+import { mapGetters} from 'vuex'
 // import 'C:\OSPanel\domains\orenburg.io\script'
 
 export default {
   name: 'app',
   data () {
     return {
-      detecting: false, isActive: false,
-      started: false, leftPage: false, rightPage: false, openMenuLeft: false, startedScrollLeftMenu: false,
+      detecting: false, 
+      isActive: false,
+      started: false, 
+      leftPage: false, 
+      rightPage: false, 
+      openMenuLeft: false, 
+      startedScrollLeftMenu: false,
       x: 0, y: 0, newX: 0, newY: 0, delta: 0,
-      touch: null, newTouch: null
+      touch: null, 
+      newTouch: null
     }
+  },
+  computed: {
+      isOpen() {  
+        console.log('qwe', this.$store.getters.getIsActiveMenu)
+          return this.$store.getters.getIsActiveMenu
+      }
   },
   components: { 
     SecretList,
@@ -49,6 +63,12 @@ export default {
     window.removeEventListener('touchend', this.handleTouchEnd)
   },
   methods: {
+    openMenu () {
+        this.$store.dispatch('openMenu', true)
+    },
+    closeMenu () {
+        this.$store.dispatch('openMenu', false)
+    }, 
     handleTouchStart(event) {
       if (event.touches.length != 1 || this.started) {
           return;
@@ -58,11 +78,11 @@ export default {
       console.log(this.touch);
       this.x = this.touch.pageX;
       this.y = this.touch.pageY;
-      if (this.openMenuLeft) {
+      if (this.isOpen) {
           if (this.x > 251 ) {
               event.preventDefault()
               this.isActive = false
-              
+              this.closeMenu()
               // closeMenu();
           } else {
               //event.preventDefault();
@@ -157,10 +177,12 @@ export default {
     if (this.delta > 0) {
         this.openMenuLeft = false;
         this.isActive = false
+        this.closeMenu()
         // closeMenu();
     } else {
         this.openMenuLeft = true;
         this.isActive = true;
+        this.openMenu()
         // openMenu();
     }
     
@@ -172,7 +194,10 @@ export default {
 </script>
 
 <style>
-
+@font-face {
+  /* font-family: 'Open Sans',sans-serif; */
+}
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
 .fade-enter-active, .fade-leave-active {
  transition: all .2s ease;
 }
@@ -190,10 +215,10 @@ body {
   font-weight: 400;
   height: 100%;
   background-color:rgb(241, 241, 241);
-  /* src: require('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'); */
-  /* font-family: 'Open Sans',sans-serif; */
+  /* src: url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'); 
+  font-family: 'Open Sans',sans-serif; */
   font-family: Roboto, RobotoDraft, Helvetica, Arial;
-  src: url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
+  /* src: url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700'); */
   
 }
 
@@ -293,19 +318,19 @@ body {
 @media (min-width: 800px) {
   body {
     overflow-x: auto;
-	  background-color:rgb(250, 250, 250);
-    background-color: rgba(255, 255, 255);
+	  /* background-color:rgb(250, 250, 250); */
+    background-color: rgb(255, 255, 255);
     /* background-color: rgba(255, 255, 255, 0.596); */
   }
 	.container {
-		 background-color:rgba(241, 241, 241, 0.815);
-     background-color: rgba(255, 255, 255);
+		 /* background-color:rgba(241, 241, 241, 0.815); */
+     background-color: rgb(255, 255, 255);
 
      /* background-color:rgb(250, 250, 250); */
 	}
 	.c1, .c2 {
-		background-color:rgb(241, 241, 241);
-    background-color: rgba(255, 255, 255);
+		/* background-color:rgb(241, 241, 241); */
+    background-color: rgb(255, 255, 255);
     /* background-color:rgb(250, 250, 250); */
 		
 	}
