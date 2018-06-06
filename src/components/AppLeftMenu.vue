@@ -301,12 +301,12 @@ export default {
 /*    background-color: rgba(189, 196, 202, 0.1);*/
     font-size: 15px;
     border-radius: 0 18px 18px 0;
-    font-weight: 600;
+    /* font-weight: 600; */
     margin-top: 0;
     margin-bottom: 0;
 	color: rgba(0,0,0,0.7);
 	opacity: .85;
-	font-weight: 500;
+	font-weight: 700;
 	background-color: rgba(189, 196, 202, 0.2);
   background-color: rgba(66, 133, 244, 0.15);
   /* background-color: rgba(66,133,244,0.149); */
@@ -398,6 +398,7 @@ export default {
     overflow: hidden;
 	text-overflow: ellipsis;
 	flex: auto;
+  font-weight: 700;
 /*    color: rgba(0,0,0,0.87);*/
 }
 
