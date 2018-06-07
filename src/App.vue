@@ -1,8 +1,7 @@
 <template>
   <div class="container" id="app">
     <AppHeader/>
-    <div class="c1" id="c1" v-bind:class="{ open: isOpen }">
-      
+    <div class="c1" id="c1" v-bind:class="{ open: isOpen }" v-bind:style="styleObject">
       <AppLeftMenu/>
     </div>
     <div class="c2">
@@ -35,13 +34,21 @@ export default {
       startedScrollLeftMenu: false,
       x: 0, y: 0, newX: 0, newY: 0, delta: 0,
       touch: null, 
-      newTouch: null
+      newTouch: null,
+      styleObject: {
+        top: '0px'
+      },
+      lastScrollTop: 0,
+      scrollingUp: false
     }
   },
   computed: {
       isOpen() {  
         console.log('qwe', this.$store.getters.getIsActiveMenu)
           return this.$store.getters.getIsActiveMenu
+      },
+      getstyleObject() {
+        top: '0px'
       }
   },
   components: { 
@@ -52,7 +59,8 @@ export default {
   created () {
     window.addEventListener('touchstart', this.handleTouchStart, { passive: false }),
     window.addEventListener('touchmove', this.handleTouchMove, { passive: false }),
-    window.addEventListener('touchend', this.handleTouchEnd, { passive: false })
+    window.addEventListener('touchend', this.handleTouchEnd, { passive: false }),
+    window.addEventListener('scroll', this.handleScroll)
     // window.addEventListener('touchstart', this.handleTouchStart),
     // window.addEventListener('touchmove', this.handleTouchMove),
     // window.addEventListener('touchend', this.handleTouchEnd)
@@ -60,9 +68,45 @@ export default {
   destroyed () {
     window.removeEventListener('touchstart', this.handleTouchStart),
     window.removeEventListener('touchmove', this.handleTouchMove),
-    window.removeEventListener('touchend', this.handleTouchEnd)
+    window.removeEventListener('touchend', this.handleTouchEnd),
+    window.removeEventListener('scroll', this.handleScroll)
   },
   methods: {
+    handleScroll (event) {
+    // почему так высчитывается так до конца и не разобрался, но математическим путем опряделяется верно. 40 пиксей добавил, чтобы загрузка происхода еще до прокрутки до самого низа
+    let scrollTop = window.pageYOffset
+    // let listOffsetHeight = document.body.offsetHeight
+    let listScrollHeight = document.body.scrollHeight
+    let listOffsetHeight = document.documentElement.clientHeight
+    // let diffHeight = listScrollHeight - listOffsetHeight
+    let scrollHeight = Math.max(
+        document.body.scrollHeight, document.documentElement.scrollHeight,
+        document.body.offsetHeight, document.documentElement.offsetHeight,
+        document.body.clientHeight, document.documentElement.clientHeight
+    );
+    let deff = scrollTop - listOffsetHeight
+
+    if (this.lastScrollTop > scrollTop && !this.scrollingUp) {
+      this.scrollingUp = true
+      this.styleObject.top = deff + 'px'
+    }
+    // let diffHeight = scrollHeight - listOffsetHeight
+    // console.log('diffHeight=',diffHeight)
+    // console.log('scrollTop=',scrollTop)
+    // console.log('scrollHeight=',scrollHeight)
+    // console.log('listOffsetHeight=',listOffsetHeight)
+//        if (diffHeight <= (scrollTop+40) && !loading && !error) {
+//            this.$store.dispatch('getSecrets', lastSecret)
+//        }
+
+        console.log('scrollTop = '+ scrollTop)
+        console.log('listOffsetHeight = '+ listOffsetHeight)
+      // if (diffHeight <= (scrollTop+200) && !this.loading && !this.error) {
+      //   this.$store.dispatch('getAllSecrets', this.lastSecret)
+      //   console.log('йцуывава = '+ this.lastSecret);
+      // }
+      this.lastScrollTop =  scrollTop
+    },
     openMenu () {
         this.$store.dispatch('openMenu', true)
     },
@@ -243,9 +287,12 @@ body {
   See: http://aerotwist.com/blog/on-translate3d-and-layer-creation-hacks/
   #perfmatters
   */
+  width: 86vw;
   z-index: 40;
-  -webkit-transform: translate(-280px,0);
-  transform: translate(-280px,0);
+  /* -webkit-transform: translate(-280px,0);
+  transform: translate(-280px,0); */
+    -webkit-transform: translate(-86vw,0);
+  transform: translate(-86vw,0);
   background-color: white;
 }
 
@@ -295,6 +342,7 @@ body {
     -webkit-transform: translate(0,0);
     transform: translate(0,0);
       z-index: 0;
+    width: 280px;
   }
   .c2 {
     top: 56px;

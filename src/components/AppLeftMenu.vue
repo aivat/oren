@@ -154,7 +154,7 @@
             <h3 class="left-menu-wrap-caption">Настройки</h3>
               <ul class="left-menu-wrap-list">
                 <li>
-                  <div class="left-menu-wrap-list-href">
+                  <div class="left-menu-wrap-list-href label-setting-link" v-on:click="switchNight">
                     <div class="left-menu-wrap-list-href-svg">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path d="M10 2c-1.82 0-3.53.5-5 1.35C7.99 5.08 10 8.3 10 12s-2.01 6.92-5 8.65C6.47 21.5 8.18 22 10 22c5.52 0 10-4.48 10-10S15.52 2 10 2z"/>
@@ -166,23 +166,23 @@
                     </div>
                     <div class="rande-label-wrap">
                       <div class="onoffswitch">
-                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
-                        <label class="onoffswitch-label" for="myonoffswitch"></label>
+                        <input type="checkbox" name="switchNight" class="onoffswitch-checkbox" id="switchNight" v-model="checkedNight">
+                        <label class="onoffswitch-label" for="switchNight"></label>
                       </div>
                     </div>
                   </div>	
                 </li>                
                 <li>
-                  <div class="left-menu-wrap-list-href">
+                  <div class="left-menu-wrap-list-href label-setting-link" v-on:click="switchAge">
                     <div class="left-menu-wrap-list-href-svg">
                       <span class="rande-label">18+</span>
                     </div>
                     <div class="left-menu-wrap-list-href-label label-setting">
                         Контент
-                    </div>
+                    </div>   
                     <div class="rande-label-wrap">
                       <div class="onoffswitch">
-                        <input type="checkbox" name="switchAge" class="onoffswitch-checkbox" id="switchAge">
+                        <input type="checkbox" name="switchAge" class="onoffswitch-checkbox" id="switchAge" v-model="checkedAge">
                         <label class="onoffswitch-label" for="switchAge"></label>
                       </div>
                     </div>
@@ -221,7 +221,25 @@
 import Range from './Range'
 
 export default {
-   components: { Range }  
+   components: { Range },
+   data() {
+     return {
+       checkedNight: false,
+       checkedAge: false
+     }
+   },
+   computed: {
+   },
+  methods: {
+      switchNight() {
+          //this.$store.dispatch('openMenu', true)
+          this.checkedNight = !this.checkedNight
+      },
+      switchAge() {
+          //this.$store.dispatch('openMenu', true)
+          this.checkedAge = !this.checkedAge
+      }
+  }
 }
 </script>
 
@@ -229,7 +247,7 @@ export default {
 .orenburg-online-wrap {
 	display: flex;
 	align-items: flex-end;
-	font-weight: 500;
+	font-weight: 700;
   height: 48px;
   line-height: 50px;
   color: black;
@@ -346,7 +364,7 @@ export default {
        /* color: #000; */
     font-size: 14px;
     height: 48px;
-    font-weight: 500;
+    font-weight: 700;
     opacity: 1;
     line-height: 50px;
     border-radius: 0 24px 24px 0;
@@ -354,18 +372,37 @@ export default {
     display: flex;
     -webkit-transition: background-color .3s cubic-bezier(0,0,0.2,1);
     transition: background-color .3s cubic-bezier(0,0,0.2,1);
+      -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently */
+    -webkit-tap-highlight-color: rgba(0,0,0,0); 
+    -webkit-tap-highlight-color: transparent;    
 }
 
-.left-menu-wrap-list-href:hover {
+.left-menu-wrap-list-href:hover:not(.label-setting-link) {
 	/* background-color: #e7e7e7;
   background-color: rgba(66, 133, 244, 0.15); */
   color: #247A86;
   color: #4285f4;
 }
-.left-menu-wrap-list-href:hover .left-menu-wrap-list-href-svg {
+.left-menu-wrap-list-href:hover:not(.label-setting-link) .left-menu-wrap-list-href-svg {
     color: #247A86;
     color: #4285f4;
     color: rgba(66, 133, 244, 1);
+}
+.label-setting-link {
+   border-radius: 0;
+}
+.label-setting-link:active {
+  /* background-color: rgba(66, 133, 244, .15); */
+  background:rgba(66,133,244,0.149);
+  color: rgba(66, 133, 244, 1);
+}
+.label-setting-link:active .left-menu-wrap-list-href-svg {
+  color: rgba(66, 133, 244, 1);
 }
 .left-menu-wrap-list-href-svg {
 	font-weight: 300;
@@ -398,7 +435,7 @@ export default {
     overflow: hidden;
 	text-overflow: ellipsis;
 	flex: auto;
-  font-weight: 700;
+  /* font-weight: 700; */
 /*    color: rgba(0,0,0,0.87);*/
 }
 
@@ -466,7 +503,17 @@ export default {
 }
 .label-setting {
   display: inline-block;
+  /* cursor: default; */
 }
+/* .label-setting-link {
+  cursor: default;
+}
+.label-setting-link svg{
+  cursor: default;
+}
+.rande-label {
+  cursor: default;
+} */
 @media (min-width: 500px) {
     .header-logo-href-close {
         display: none;
@@ -500,6 +547,9 @@ export default {
 	}
   .rande-label-wrap {
     margin-right: 10px;
+  }
+  .left-menu-wrap-list-href {
+    font-weight: 500;
   }
 }
 </style>

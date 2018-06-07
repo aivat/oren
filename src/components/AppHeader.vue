@@ -27,8 +27,8 @@
                             <path d="M2 15.5v2h20v-2H2zm0-5v2h20v-2H2zm0-5v2h20v-2H2z"/>
                             <path d="M0 0h24v24H0z" fill="none"/>
                         </svg> -->
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="26px"
-                            height="26px" viewBox="0 -3 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px"
+                            height="24px" viewBox="0 -3 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
                         <g id="Bounding_Boxes">
                             <path fill="none" d="M0,0h24v24H0V0z"/>
                         </g>

@@ -83,8 +83,14 @@ input[type=range]:focus {
 }
 .rande-label {
     color: rgb(123,133,142);
-    font-weight: 500;
+    font-weight: 700;
 	padding-right: 20px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently */
 }
 /*Для webkit-браузеров*/
 
@@ -188,6 +194,11 @@ input[type=range]:focus::-ms-fill-upper {
     }
     .rande-label {
         padding-right: 10px;
+    }
+}
+@media (min-width: 1050px) {
+    .rande-label {
+        font-weight: 500;
     }
 }
 </style>
