@@ -1,7 +1,7 @@
 <template>
   <div class="container" id="app">
     <AppHeader/>
-    <div class="c1" id="c1" v-bind:class="{ open: isOpen }" v-bind:style="styleObject">
+    <div class="c1" id="c1" v-bind:class="{ open: isOpen, sticky: isActive}" v-bind:style="styleObject">
       <AppLeftMenu/>
     </div>
     <div class="c2">
@@ -36,10 +36,12 @@ export default {
       touch: null, 
       newTouch: null,
       styleObject: {
-        top: '0px'
+        top: '56px'
       },
       lastScrollTop: 0,
-      scrollingUp: false
+      scrollingUp: false,
+      scrollingDown: true,
+      lastScrollTopSticky: 56
     }
   },
   computed: {
@@ -48,7 +50,7 @@ export default {
           return this.$store.getters.getIsActiveMenu
       },
       getstyleObject() {
-        top: '0px'
+        top: '56px'
       }
   },
   components: { 
@@ -86,9 +88,30 @@ export default {
     );
     let deff = scrollTop - listOffsetHeight
 
-    if (this.lastScrollTop > scrollTop && !this.scrollingUp) {
+    if (this.lastScrollTop > scrollTop && !this.scrollingUp && deff > 0) {
       this.scrollingUp = true
       this.styleObject.top = deff + 'px'
+      this.lastScrollTopSticky = deff
+      
+    }
+    if (this.lastScrollTop > scrollTop) {
+      if ( scrollTop < this.lastScrollTopSticky ) {
+        this.isActive = true
+        this.styleObject.top = 56 + 'px'
+        this.scrollingDown = false
+      }
+      
+    }
+
+    if (this.lastScrollTop < scrollTop && !this.scrollingDown) {
+      this.scrollingUp = false
+      this.scrollingDown = true
+      // if ( scrollTop > this.lastScrollTopSticky ) {
+        this.isActive = false
+        // this.lastScrollTopSticky = this.lastScrollTopSticky - 56
+        this.styleObject.top = scrollTop + 'px'
+      // }
+      
     }
     // let diffHeight = scrollHeight - listOffsetHeight
     // console.log('diffHeight=',diffHeight)
@@ -125,7 +148,8 @@ export default {
       if (this.isOpen) {
           if (this.x > 251 ) {
               event.preventDefault()
-              this.isActive = false
+              // this.isActive = false
+
               this.closeMenu()
               // closeMenu();
           } else {
@@ -220,12 +244,12 @@ export default {
     this.startedScrollLeftMenu = false;
     if (this.delta > 0) {
         this.openMenuLeft = false;
-        this.isActive = false
+        // this.isActive = false
         this.closeMenu()
         // closeMenu();
     } else {
         this.openMenuLeft = true;
-        this.isActive = true;
+        // this.isActive = true;
         this.openMenu()
         // openMenu();
     }
@@ -357,7 +381,15 @@ body {
 	.c1, .c3 {
 		margin-top: 10px;
 	}
+.sticky {
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: -o-sticky;
+  position: sticky;
 
+  /* top: 56px; */
+}
 }
 
 

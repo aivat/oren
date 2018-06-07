@@ -357,6 +357,9 @@ svg {
 		color: rgba(66, 133, 244, 1);
 	}
 @media (min-width: 500px) {
+    .header {
+        height: 56px;
+    }
     .header-item-href {
         display: flex;
         text-decoration: none;
