@@ -88,38 +88,49 @@ export default {
     );
     let deff = scrollTop - listOffsetHeight
 
-    if (this.lastScrollTop > scrollTop && !this.scrollingUp && deff > 0) {
+    if (this.lastScrollTop > scrollTop && !this.scrollingUp && deff > 0 ) {
       this.scrollingUp = true
-      // if ( (scrollTop - 70) < this.lastScrollTopSticky ) {
+       if ( (this.lastScrollTopSticky + 762) < scrollTop) {
+          this.styleObject.top = deff + 'px'
+          this.lastScrollTopSticky = deff
+
+          
+       } else {
+
+       }
       //   this.isActive = true
       //   this.styleObject.top = 56 + 'px'
       //   this.scrollingDown = false
       // } else {
-      this.styleObject.top = deff + 'px'
-      this.lastScrollTopSticky = deff
+      // this.styleObject.top = deff + 'px'
+      // this.lastScrollTopSticky = deff
+      console.log('this.lastScrollTopSticky=', this.lastScrollTopSticky)
       // }
 
       
     }
     if (this.lastScrollTop > scrollTop) {
       // if ( (scrollTop + 56) < this.lastScrollTopSticky ) {
-    if ( scrollTop < this.lastScrollTopSticky ) {
+    if ( (scrollTop-20) < this.lastScrollTopSticky ) {
         this.isActive = true
         // this.styleObject.top = 56 + 'px'
         this.styleObject.top = '0px'
+        this.scrollingDown = false 
       }
-    this.scrollingDown = false  
+     
     }
 
-    if (this.lastScrollTop < scrollTop && !this.scrollingDown) {
+    if (this.lastScrollTop < scrollTop && !this.scrollingDown ) {
       this.scrollingUp = false
       this.scrollingDown = true
       // if ( scrollTop > this.lastScrollTopSticky ) {
         this.isActive = false
         // this.lastScrollTopSticky = this.lastScrollTopSticky - 56
-        this.styleObject.top = scrollTop + 'px'
+       // this.styleObject.top = scrollTop + 'px'
       // }
-      
+      if ( (this.lastScrollTopSticky + 762) < scrollTop) {
+        this.styleObject.top = scrollTop + 'px'
+      }
     }
     // let diffHeight = scrollHeight - listOffsetHeight
     // console.log('diffHeight=',diffHeight)
@@ -131,7 +142,7 @@ export default {
 //        }
 
         console.log('scrollTop = '+ scrollTop)
-        console.log('listOffsetHeight = '+ listOffsetHeight)
+        // console.log('listOffsetHeight = '+ listOffsetHeight)
       // if (diffHeight <= (scrollTop+200) && !this.loading && !this.error) {
       //   this.$store.dispatch('getAllSecrets', this.lastSecret)
       //   console.log('йцуывава = '+ this.lastSecret);
