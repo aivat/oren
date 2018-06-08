@@ -36,12 +36,12 @@ export default {
       touch: null, 
       newTouch: null,
       styleObject: {
-        top: '56px'
+      top: '0px'
       },
       lastScrollTop: 0,
       scrollingUp: false,
       scrollingDown: true,
-      lastScrollTopSticky: 56
+      lastScrollTopSticky: 0
     }
   },
   computed: {
@@ -90,17 +90,25 @@ export default {
 
     if (this.lastScrollTop > scrollTop && !this.scrollingUp && deff > 0) {
       this.scrollingUp = true
+      // if ( (scrollTop - 70) < this.lastScrollTopSticky ) {
+      //   this.isActive = true
+      //   this.styleObject.top = 56 + 'px'
+      //   this.scrollingDown = false
+      // } else {
       this.styleObject.top = deff + 'px'
       this.lastScrollTopSticky = deff
+      // }
+
       
     }
     if (this.lastScrollTop > scrollTop) {
-      if ( scrollTop < this.lastScrollTopSticky ) {
+      // if ( (scrollTop + 56) < this.lastScrollTopSticky ) {
+    if ( scrollTop < this.lastScrollTopSticky ) {
         this.isActive = true
-        this.styleObject.top = 56 + 'px'
-        this.scrollingDown = false
+        // this.styleObject.top = 56 + 'px'
+        this.styleObject.top = '0px'
       }
-      
+    this.scrollingDown = false  
     }
 
     if (this.lastScrollTop < scrollTop && !this.scrollingDown) {
@@ -359,7 +367,8 @@ body {
     flex-flow: row nowrap;
   }
   .c1 {
-    top: 56px;
+    /* top: 56px; */
+    padding-top: 56px;
     position: relative;
     -webkit-transition: none 0s ease-out;
     transition: none 0s ease-out;
