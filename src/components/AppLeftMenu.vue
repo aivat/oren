@@ -132,22 +132,39 @@
                       </div>
                     </a>	
                   </li>
-                  <li>
-                    <a href="#" class="left-menu-wrap-list-href">
-                      <div class="left-menu-wrap-list-href-svg">
-                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                            width="24" height="24"
-                            viewBox="0 0 24 24"><g id="surface1"><path style=" " d="M 8 3 C 5.238281 3 3 5.238281 3 8 L 3 16 C 3 18.761719 5.238281 21 8 21 L 16 21 C 18.761719 21 21 18.761719 21 16 L 21 8 C 21 5.238281 18.761719 3 16 3 Z M 18 5 C 18.550781 5 19 5.449219 19 6 C 19 6.550781 18.550781 7 18 7 C 17.449219 7 17 6.550781 17 6 C 17 5.449219 17.449219 5 18 5 Z M 12 7 C 14.761719 7 17 9.238281 17 12 C 17 14.761719 14.761719 17 12 17 C 9.238281 17 7 14.761719 7 12 C 7 9.238281 9.238281 7 12 7 Z M 12 9 C 10.34375 9 9 10.34375 9 12 C 9 13.65625 10.34375 15 12 15 C 13.65625 15 15 13.65625 15 12 C 15 10.34375 13.65625 9 12 9 Z ">
-                          </path></g>
-                        </svg>
-                      </div>
-                      <div class="left-menu-wrap-list-href-label instoren">
-                        <b>InstOren</b>
-                      </div>
-                    </a>	
-                  </li>
                   </ul>
                 </div>
+      </div>
+        <div class="left-menu-content">
+          <div class="left-menu-wrap">
+            <h3 class="left-menu-wrap-caption">Лучшие</h3>
+              <ul class="left-menu-wrap-list best">
+                <li>
+                  <a href="#" class="left-menu-wrap-list-href">
+                    <div class="left-menu-wrap-list-href-svg">
+                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px"
+                          height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                      <g id="Bounding_Boxes">
+                          <g id="ui_x5F_spec_x5F_header_copy_2">
+                          </g>
+                          <path fill="none" d="M0,0h24v24H0V0z"/>
+                      </g>
+                      <g id="Rounded">
+                          <path d="M17.09,4.56c-0.7-1.03-1.5-1.99-2.4-2.85c-0.35-0.34-0.94-0.02-0.84,0.46c0.19,0.94,0.39,2.18,0.39,3.29
+                              c0,2.06-1.35,3.73-3.41,3.73c-1.54,0-2.8-0.93-3.35-2.26c-0.1-0.2-0.14-0.32-0.2-0.54C7.17,5.97,6.62,5.84,6.38,6.21
+                              C6.2,6.48,6.03,6.75,5.87,7.04C4.68,9.08,4,11.46,4,14c0,4.42,3.58,8,8,8s8-3.58,8-8C20,10.51,18.92,7.27,17.09,4.56z M11.71,19
+                              c-1.78,0-3.22-1.4-3.22-3.14c0-1.62,1.05-2.76,2.81-3.12c1.47-0.3,2.98-0.93,4.03-1.92c0.28-0.26,0.74-0.14,0.82,0.23
+                              c0.23,1.02,0.35,2.08,0.35,3.15C16.51,16.85,14.36,19,11.71,19z"/>
+                      </g>
+                      </svg>                         
+                  </div>
+                  <div class="left-menu-wrap-list-href-label">
+                      Лучшее
+                  </div>
+                  </a>
+                </li>               
+              </ul>
+          </div> 
       </div>
       <div class="left-menu-content">
           <div class="left-menu-wrap">
@@ -263,9 +280,8 @@ export default {
 	font-size: 12px;
 	top: 2px;
 }
-.instoren {
-	color: dodgerblue;
-}
+
+
 .c1 {
 /*    box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2);*/
 }
@@ -346,7 +362,9 @@ export default {
     display: block;
 /*    padding: 10px 40px;*/
 }
-
+.best {
+  padding-bottom: 0;
+}
 .left-menu-wrap-list-href {
 	display: flex;
 	text-decoration: none;

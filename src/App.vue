@@ -1,7 +1,7 @@
 <template>
   <div class="container" id="app">
     <AppHeader/>
-    <div class="c1" id="c1" v-bind:class="{ open: isOpen, sticky: isActive}" v-bind:style="styleObject">
+    <div class="c1" id="c1" v-bind:class="{ open: isOpen, sticky: isSticky}" v-bind:style="styleObject">
       <AppLeftMenu/>
     </div>
     <div class="c2">
@@ -27,6 +27,7 @@ export default {
     return {
       detecting: false, 
       isActive: false,
+      isSticky: false,
       started: false, 
       leftPage: false, 
       rightPage: false, 
@@ -36,7 +37,7 @@ export default {
       touch: null, 
       newTouch: null,
       styleObject: {
-      top: '0px'
+        top: '0px'
       },
       lastScrollTop: 0,
       scrollingUp: false,
@@ -61,8 +62,10 @@ export default {
   created () {
     window.addEventListener('touchstart', this.handleTouchStart, { passive: false }),
     window.addEventListener('touchmove', this.handleTouchMove, { passive: false }),
-    window.addEventListener('touchend', this.handleTouchEnd, { passive: false }),
-    window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('touchend', this.handleTouchEnd, { passive: false })
+    if (window.innerWidth>500) {
+      window.addEventListener('scroll', this.handleScroll)
+    }
     // window.addEventListener('touchstart', this.handleTouchStart),
     // window.addEventListener('touchmove', this.handleTouchMove),
     // window.addEventListener('touchend', this.handleTouchEnd)
@@ -70,8 +73,10 @@ export default {
   destroyed () {
     window.removeEventListener('touchstart', this.handleTouchStart),
     window.removeEventListener('touchmove', this.handleTouchMove),
-    window.removeEventListener('touchend', this.handleTouchEnd),
+    window.removeEventListener('touchend', this.handleTouchEnd)
+    if (window.innerWidth>500) {
     window.removeEventListener('scroll', this.handleScroll)
+    }
   },
   methods: {
     handleScroll (event) {
@@ -87,67 +92,61 @@ export default {
         document.body.clientHeight, document.documentElement.clientHeight
     );
     let deff = scrollTop - listOffsetHeight
-
-    if (this.lastScrollTop > scrollTop && !this.scrollingUp && deff > 0 ) {
-      this.scrollingUp = true
-       if ( (this.lastScrollTopSticky + 762) < scrollTop) {
-          this.styleObject.top = deff + 'px'
-          this.lastScrollTopSticky = deff
-
-          
-       } else {
-
-       }
-      //   this.isActive = true
-      //   this.styleObject.top = 56 + 'px'
-      //   this.scrollingDown = false
-      // } else {
-      // this.styleObject.top = deff + 'px'
-      // this.lastScrollTopSticky = deff
-      console.log('this.lastScrollTopSticky=', this.lastScrollTopSticky)
-      // }
-
-      
-    }
-    if (this.lastScrollTop > scrollTop) {
-      // if ( (scrollTop + 56) < this.lastScrollTopSticky ) {
-    if ( (scrollTop-20) < this.lastScrollTopSticky ) {
-        this.isActive = true
-        // this.styleObject.top = 56 + 'px'
-        this.styleObject.top = '0px'
-        this.scrollingDown = false 
+    let h = 818
+    // движение вниз
+    if (this.lastScrollTop < scrollTop) {
+      console.log('движение вниз')
+      if (this.lastScrollTopSticky + h < scrollTop) {
+        this.lastScrollTopSticky = scrollTop - h
+        console.log('движение вниз 2')
+        console.log('this.lastScrollTopSticky = ', this.lastScrollTopSticky)
       }
-     
-    }
-
-    if (this.lastScrollTop < scrollTop && !this.scrollingDown ) {
-      this.scrollingUp = false
-      this.scrollingDown = true
-      // if ( scrollTop > this.lastScrollTopSticky ) {
-        this.isActive = false
-        // this.lastScrollTopSticky = this.lastScrollTopSticky - 56
-       // this.styleObject.top = scrollTop + 'px'
-      // }
-      if ( (this.lastScrollTopSticky + 762) < scrollTop) {
+      if (this.isSticky) {
+        this.isSticky = false
         this.styleObject.top = scrollTop + 'px'
+        this.lastScrollTopSticky = scrollTop
+      }
+    } else {
+      console.log('движение вверх')
+      console.log('this.lastScrollTopSticky + h =', this.lastScrollTopSticky + h)
+      if (this.lastScrollTopSticky + h <= scrollTop+15) {
+        console.log('движение вверх 2')
+        console.log('this.styleObject.top = ', this.styleObject.top)
+        this.styleObject.top =  this.lastScrollTopSticky + 'px'
+      } else {
+        // 
+        if (this.lastScrollTopSticky > scrollTop - 15) {
+          this.isSticky = true
+          this.styleObject.top = '0px'
+        }
       }
     }
-    // let diffHeight = scrollHeight - listOffsetHeight
-    // console.log('diffHeight=',diffHeight)
-    // console.log('scrollTop=',scrollTop)
-    // console.log('scrollHeight=',scrollHeight)
-    // console.log('listOffsetHeight=',listOffsetHeight)
-//        if (diffHeight <= (scrollTop+40) && !loading && !error) {
-//            this.$store.dispatch('getSecrets', lastSecret)
-//        }
+
+
+    // if (this.lastScrollTop > scrollTop && !this.scrollingUp && deff > 0) {
+    //   this.scrollingUp = true
+    //   this.styleObject.top = deff + 'px'
+    //   this.lastScrollTopSticky = deff
+    // }
+    // if (this.lastScrollTop > scrollTop) {
+    // if ( scrollTop <= this.lastScrollTopSticky ) {
+    //     this.isActive = true
+    //     this.styleObject.top = '0px'
+    //   }
+    // this.scrollingDown = false  
+    // }
+
+    // if (this.lastScrollTop < scrollTop && !this.scrollingDown) {
+    //   this.scrollingUp = false
+    //   this.scrollingDown = true
+    //     this.isActive = false
+    //     this.styleObject.top = scrollTop + 'px'
+      
+    // }
 
         console.log('scrollTop = '+ scrollTop)
         // console.log('listOffsetHeight = '+ listOffsetHeight)
-      // if (diffHeight <= (scrollTop+200) && !this.loading && !this.error) {
-      //   this.$store.dispatch('getAllSecrets', this.lastSecret)
-      //   console.log('йцуывава = '+ this.lastSecret);
-      // }
-      this.lastScrollTop =  scrollTop
+    this.lastScrollTop =  scrollTop
     },
     openMenu () {
         this.$store.dispatch('openMenu', true)

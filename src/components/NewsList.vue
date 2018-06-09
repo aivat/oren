@@ -2,7 +2,7 @@
   <div>
     <div>
         Скоро будут тут исключительно новости
-        <div class="wrap" v-for="item in 5">
+        <div class="wrap" v-for="item in 10">
           <p class="ftw100">Политика Происшествия Спорт 100</p>
           <p class="ftw300">Политика Происшествия Спорт 300</p>
           <p class="ftw400">Политика Происшествия Спорт 400</p>
@@ -24,7 +24,7 @@ export default {
 .wrap {
   background-color: #fff;
   border-radius: 4px;
-  margin: 15px 4px;
+  margin: 5px 5px;
   padding: 10px 15px;
   box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
 }
