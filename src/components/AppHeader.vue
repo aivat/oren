@@ -28,7 +28,7 @@
                             <path d="M0 0h24v24H0z" fill="none"/>
                         </svg> -->
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="26px"
-                            height="26px" viewBox="0 -2 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                            height="26px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
                         <g id="Bounding_Boxes">
                             <path fill="none" d="M0,0h24v24H0V0z"/>
                         </g>
@@ -47,8 +47,8 @@
                     <!-- <svg fill="#000000" height="26" viewBox="0 0 24 24" width="26" xmlns="http://www.w3.org/2000/svg">
                         <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
                     </svg> -->
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px"
-                            height="28px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="27px"
+                            height="27px" viewBox="0 2 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
                         <g id="Header_x2F_BG" display="none">
                             <rect x="-314" y="-446" display="inline" fill="#F1F1F2" width="520" height="520"/>
                         </g>
@@ -99,8 +99,8 @@
                 <router-link to="/hot" class="header-item-href" active-class="header-item-href-active">
                     <div class="header-item-svg">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                            width="25" height="25"
-                            viewBox="0 -1 24 24"><g id="surface1"><path style=" " d="M 8 3 C 5.238281 3 3 5.238281 3 8 L 3 16 C 3 18.761719 5.238281 21 8 21 L 16 21 C 18.761719 21 21 18.761719 21 16 L 21 8 C 21 5.238281 18.761719 3 16 3 Z M 18 5 C 18.550781 5 19 5.449219 19 6 C 19 6.550781 18.550781 7 18 7 C 17.449219 7 17 6.550781 17 6 C 17 5.449219 17.449219 5 18 5 Z M 12 7 C 14.761719 7 17 9.238281 17 12 C 17 14.761719 14.761719 17 12 17 C 9.238281 17 7 14.761719 7 12 C 7 9.238281 9.238281 7 12 7 Z M 12 9 C 10.34375 9 9 10.34375 9 12 C 9 13.65625 10.34375 15 12 15 C 13.65625 15 15 13.65625 15 12 C 15 10.34375 13.65625 9 12 9 Z ">
+                            width="26" height="26"
+                            viewBox="0 0 24 24"><g id="surface1"><path style=" " d="M 8 3 C 5.238281 3 3 5.238281 3 8 L 3 16 C 3 18.761719 5.238281 21 8 21 L 16 21 C 18.761719 21 21 18.761719 21 16 L 21 8 C 21 5.238281 18.761719 3 16 3 Z M 18 5 C 18.550781 5 19 5.449219 19 6 C 19 6.550781 18.550781 7 18 7 C 17.449219 7 17 6.550781 17 6 C 17 5.449219 17.449219 5 18 5 Z M 12 7 C 14.761719 7 17 9.238281 17 12 C 17 14.761719 14.761719 17 12 17 C 9.238281 17 7 14.761719 7 12 C 7 9.238281 9.238281 7 12 7 Z M 12 9 C 10.34375 9 9 10.34375 9 12 C 9 13.65625 10.34375 15 12 15 C 13.65625 15 15 13.65625 15 12 C 15 10.34375 13.65625 9 12 9 Z ">
                           </path></g>
                         </svg>                    
                     </div>
@@ -117,7 +117,7 @@
                             <path d="M9 15c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4zm7.76-9.64l-1.68 1.69c.84 1.18.84 2.71 0 3.89l1.68 1.69c2.02-2.02 2.02-5.07 0-7.27zM20.07 2l-1.63 1.63c2.77 3.02 2.77 7.56 0 10.74L20.07 16c3.9-3.89 3.91-9.95 0-14z"/>
                         </svg> -->
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="26px"
-                            height="26px" viewBox="0 -2 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                            height="26px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
                         <g id="Header_x2F_BG" display="none">
                             <rect x="-270" y="-270" display="inline" fill="#F1F1F2" width="520" height="520"/>
                         </g>
@@ -196,8 +196,8 @@
             <div class="header-item">
                 <router-link to="/orenburg" class="header-item-href" active-class="header-item-href-active">
                     <div class="header-item-svg">
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px"
-                            height="25px" viewBox="0 -1 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="26px"
+                            height="26px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
                         <g id="Bounding_Boxes">
                             <g id="ui_x5F_spec_x5F_header_copy_2">
                             </g>
