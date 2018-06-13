@@ -71,6 +71,7 @@ input[type=range]:focus {
 	width: 30px;
 	color: rgba(36, 122, 134, .8);
     padding-right: 10px;
+    color: rgba(66, 133, 244, .8);
 }
 
 .range {
@@ -109,6 +110,7 @@ input[type=range]::-webkit-slider-thumb {
     width: 20px;
     border-radius: 50%;
     background: #247A86;
+    background: rgba(66, 133, 244, 1);
     margin-top: -4px;
 }
 
@@ -134,6 +136,7 @@ input[type=range]::-moz-range-thumb {
     width: 20px;
     border-radius: 50%;
     background: #247A86;
+    background: rgba(66, 133, 244, 1);
 }
 
 input[type=range]:-moz-focusring{
@@ -148,6 +151,7 @@ input[type=range]:focus::-moz-range-track {
 input[type=range]::-moz-range-progress { 
    background: #ccc;
    background: rgba(36, 122, 134, .3);
+   background: rgba(66, 133, 244, .15);
    height: 12px;
    border-radius: 6px;
 }
@@ -165,11 +169,13 @@ input[type=range]::-ms-track {
 
  input[type=range]::-ms-fill-lower {
 	background: rgba(36, 122, 134, 0.3);
+    background: rgba(66, 133, 244, .15);
     border-radius: 10px;
 }
 
 input[type=range]::-ms-fill-upper {
 	background: rgba(36, 122, 134, 0.3);
+    background: rgba(66, 133, 244, .15);
     border-radius: 10px;
 }
 
@@ -183,6 +189,7 @@ input[type=range]::-ms-thumb {
 
 input[type=range]:focus::-ms-fill-lower {
 	background: rgba(36, 122, 134, 0.3);
+    background: rgba(66, 133, 244, .15);
 }
 
 input[type=range]:focus::-ms-fill-upper {

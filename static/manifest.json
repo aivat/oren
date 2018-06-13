@@ -1,6 +1,7 @@
 {
-  "name": "oren",
-  "short_name": "oren",
+  "name": "Оренбург Online",
+  "short_name": "Оренбург Online",
+  "lang": "ru-RU",
   "icons": [
     {
       "src": "/static/img/icons/android-chrome-192x192.png",
@@ -15,6 +16,7 @@
   ],
   "start_url": "/index.html",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#4DBA87"
+  "description": "Приложение, которое поможет Вам быть в курсе событий Оренбурга!",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff"
 }

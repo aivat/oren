@@ -136,11 +136,12 @@
                 </div>
       </div>
         <div class="left-menu-content">
-          <div class="left-menu-wrap">
-            <h3 class="left-menu-wrap-caption">Лучшие</h3>
+          <div class="left-menu-wrap left-menu-wrap-best">
+            <h3 class="left-menu-wrap-caption ">Лучшие</h3>
               <ul class="left-menu-wrap-list best">
                 <li>
-                  <a href="#" class="left-menu-wrap-list-href">
+                  <!-- <a href="#" class="left-menu-wrap-list-href"> -->
+                  <router-link to="/hot" class="left-menu-wrap-list-href" active-class="left-menu-wrap-list-href-active">
                     <div class="left-menu-wrap-list-href-svg">
                       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px"
                           height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
@@ -161,13 +162,14 @@
                   <div class="left-menu-wrap-list-href-label">
                       Лучшее
                   </div>
-                  </a>
+                  </router-link>
+                  <!-- </a> -->
                 </li>               
               </ul>
           </div> 
       </div>
       <div class="left-menu-content">
-          <div class="left-menu-wrap">
+          <div class="left-menu-wrap left-menu-wrap-best">
             <h3 class="left-menu-wrap-caption">Настройки</h3>
               <ul class="left-menu-wrap-list">
                 <li>
@@ -356,7 +358,10 @@ export default {
 	font-weight: 500; 
 /*	opacity: .85;*/
 }
-
+.left-menu-wrap-best {
+  margin-top: 10px;
+  padding-bottom: 10px;
+}
 .left-menu-wrap-list>li {
     list-style-type: none;
     display: block;
@@ -420,6 +425,14 @@ export default {
   color: rgba(66, 133, 244, 1);
 }
 .label-setting-link:active .left-menu-wrap-list-href-svg {
+  color: rgba(66, 133, 244, 1);
+}
+.left-menu-wrap-list-href-active {
+  border-radius: 0 24px 24px 0;
+  color: rgba(66, 133, 244, 1);
+  background:rgba(66,133,244,0.149);
+}
+.left-menu-wrap-list-href-active .left-menu-wrap-list-href-svg {
   color: rgba(66, 133, 244, 1);
 }
 .left-menu-wrap-list-href-svg {
@@ -501,11 +514,14 @@ export default {
     transition: all 0.3s ease-in 0s; 
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label {
-    background-color: rgba(36, 122, 134, .3);
+    background-color: rgba(36, 122, 134, .15);
+    background-color: rgba(66, 133, 244, .15);
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label:before {
    border-color: #247A86;
    background: #247A86;
+   background: rgba(66, 133, 244, 1);
+   border-color: rgba(66, 133, 244, 1);
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label:before {
     right: 0px; 

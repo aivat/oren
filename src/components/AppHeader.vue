@@ -27,8 +27,8 @@
                             <path d="M2 15.5v2h20v-2H2zm0-5v2h20v-2H2zm0-5v2h20v-2H2z"/>
                             <path d="M0 0h24v24H0z" fill="none"/>
                         </svg> -->
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px"
-                            height="24px" viewBox="0 -3 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="26px"
+                            height="26px" viewBox="0 -2 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
                         <g id="Bounding_Boxes">
                             <path fill="none" d="M0,0h24v24H0V0z"/>
                         </g>
@@ -99,8 +99,8 @@
                 <router-link to="/hot" class="header-item-href" active-class="header-item-href-active">
                     <div class="header-item-svg">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                            width="24" height="24"
-                            viewBox="0 -2 24 24"><g id="surface1"><path style=" " d="M 8 3 C 5.238281 3 3 5.238281 3 8 L 3 16 C 3 18.761719 5.238281 21 8 21 L 16 21 C 18.761719 21 21 18.761719 21 16 L 21 8 C 21 5.238281 18.761719 3 16 3 Z M 18 5 C 18.550781 5 19 5.449219 19 6 C 19 6.550781 18.550781 7 18 7 C 17.449219 7 17 6.550781 17 6 C 17 5.449219 17.449219 5 18 5 Z M 12 7 C 14.761719 7 17 9.238281 17 12 C 17 14.761719 14.761719 17 12 17 C 9.238281 17 7 14.761719 7 12 C 7 9.238281 9.238281 7 12 7 Z M 12 9 C 10.34375 9 9 10.34375 9 12 C 9 13.65625 10.34375 15 12 15 C 13.65625 15 15 13.65625 15 12 C 15 10.34375 13.65625 9 12 9 Z ">
+                            width="25" height="25"
+                            viewBox="0 -1 24 24"><g id="surface1"><path style=" " d="M 8 3 C 5.238281 3 3 5.238281 3 8 L 3 16 C 3 18.761719 5.238281 21 8 21 L 16 21 C 18.761719 21 21 18.761719 21 16 L 21 8 C 21 5.238281 18.761719 3 16 3 Z M 18 5 C 18.550781 5 19 5.449219 19 6 C 19 6.550781 18.550781 7 18 7 C 17.449219 7 17 6.550781 17 6 C 17 5.449219 17.449219 5 18 5 Z M 12 7 C 14.761719 7 17 9.238281 17 12 C 17 14.761719 14.761719 17 12 17 C 9.238281 17 7 14.761719 7 12 C 7 9.238281 9.238281 7 12 7 Z M 12 9 C 10.34375 9 9 10.34375 9 12 C 9 13.65625 10.34375 15 12 15 C 13.65625 15 15 13.65625 15 12 C 15 10.34375 13.65625 9 12 9 Z ">
                           </path></g>
                         </svg>                    
                     </div>
@@ -116,8 +116,8 @@
                             <circle cx="9" cy="9" r="4"/>
                             <path d="M9 15c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4zm7.76-9.64l-1.68 1.69c.84 1.18.84 2.71 0 3.89l1.68 1.69c2.02-2.02 2.02-5.07 0-7.27zM20.07 2l-1.63 1.63c2.77 3.02 2.77 7.56 0 10.74L20.07 16c3.9-3.89 3.91-9.95 0-14z"/>
                         </svg> -->
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px"
-                            height="24px" viewBox="0 -2 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="26px"
+                            height="26px" viewBox="0 -2 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
                         <g id="Header_x2F_BG" display="none">
                             <rect x="-270" y="-270" display="inline" fill="#F1F1F2" width="520" height="520"/>
                         </g>
@@ -196,8 +196,18 @@
             <div class="header-item">
                 <router-link to="/orenburg" class="header-item-href" active-class="header-item-href-active">
                     <div class="header-item-svg">
-                        <svg fill="#000000" height="26" viewBox="0 -2 24 24" width="26" xmlns="http://www.w3.org/2000/svg">    
-                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px"
+                            height="25px" viewBox="0 -1 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                        <g id="Bounding_Boxes">
+                            <g id="ui_x5F_spec_x5F_header_copy_2">
+                            </g>
+                            <path fill="none" d="M0,0h24v24H0V0z"/>
+                        </g>
+                        <g id="Rounded">
+                            <path d="M12,7V5c0-1.1-0.9-2-2-2H4C2.9,3,2,3.9,2,5v14c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V9c0-1.1-0.9-2-2-2H12z M6,19H4v-2h2V19z
+                                M6,15H4v-2h2V15z M6,11H4V9h2V11z M6,7H4V5h2V7z M10,19H8v-2h2V19z M10,15H8v-2h2V15z M10,11H8V9h2V11z M10,7H8V5h2V7z M19,19h-7
+                                v-2h2v-2h-2v-2h2v-2h-2V9h7c0.55,0,1,0.45,1,1v8C20,18.55,19.55,19,19,19z M18,11h-2v2h2V11z M18,15h-2v2h2V15z"/>
+                        </g>
                         </svg>
                     </div>
                     <div class="header-item-text">

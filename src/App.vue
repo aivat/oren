@@ -52,6 +52,9 @@ export default {
       },
       getstyleObject() {
         top: '56px'
+      },
+      getC1Width() {
+        return window.innerWidth*0.845
       }
   },
   components: { 
@@ -164,7 +167,8 @@ export default {
       this.x = this.touch.pageX;
       this.y = this.touch.pageY;
       if (this.isOpen) {
-          if (this.x > 251 ) {
+          // if (this.x > 251 ) {
+          if (this.x > this.getC1Width ) {
               event.preventDefault()
               // this.isActive = false
 
@@ -329,12 +333,12 @@ body {
   See: http://aerotwist.com/blog/on-translate3d-and-layer-creation-hacks/
   #perfmatters
   */
-  width: 86vw;
+  width: 84.5vw;
   z-index: 40;
   /* -webkit-transform: translate(-280px,0);
   transform: translate(-280px,0); */
-    -webkit-transform: translate(-86vw,0);
-  transform: translate(-86vw,0);
+    -webkit-transform: translate(-84.5vw,0);
+  transform: translate(-84.5vw,0);
   background-color: white;
 }
 
