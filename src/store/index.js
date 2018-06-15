@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 //import cart from './modules/cart'
 import secrets from './modules/secrets'
+import news from './modules/news'
 import range from './modules/range'
 import rangeLocal from './plugins/rangeLocal'
 import openMenu from './modules/openMenu'
@@ -16,7 +17,8 @@ export default new Vuex.Store({
   modules: {
     secrets,
     range,
-    openMenu
+    openMenu,
+    news
   },
   strict: debug
   // plugins: [rangeLocal],

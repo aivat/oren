@@ -77,7 +77,7 @@
                         </svg>
                       </div>
                       <div class="left-menu-wrap-list-href-label">
-                        Здравоохранение
+                        Здоровье
                       </div>
                     </a>	
                   </li>

@@ -2,11 +2,11 @@
   <div>
     <div>
         Скоро будут тут исключительно новости
-        <div class="wrap" v-for="item in 10">
-          <p class="ftw100">Политика Происшествия Спорт 100</p>
-          <p class="ftw300">Политика Происшествия Спорт 300</p>
-          <p class="ftw400">Политика Происшествия Спорт 400</p>
-          <p class="ftw500">Политика Происшествия Спорт 500</p>
+        <div class="wrap" v-for="item in news">
+          <p class="ftw100">{{ item.title }}</p>
+          <p class="ftw300">{{ item.content }}</p>
+          <p class="ftw400">{{ item.category }}</p>
+          <p class="ftw500"></p>
           <p class="ftw700">Политика Происшествия Спорт 700</p>
         </div>
     </div>
@@ -14,9 +14,18 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 
 export default {
-
+  computed: mapState({
+    news: state => state.news.all
+  }),
+  methods: mapActions('cart', [
+    'addProductToCart'
+  ]),
+  created () {
+    this.$store.dispatch('getAllNews')
+  }
 }
 </script>
 

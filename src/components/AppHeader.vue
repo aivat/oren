@@ -96,7 +96,7 @@
                 </router-link>
             </div>
             <div class="header-item">
-                <router-link to="/hot" class="header-item-href" active-class="header-item-href-active">
+                <router-link to="/instoren" class="header-item-href" active-class="header-item-href-active">
                     <div class="header-item-svg">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                             width="26" height="26"
