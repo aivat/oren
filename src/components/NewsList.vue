@@ -24,7 +24,7 @@ export default {
     'addProductToCart'
   ]),
   created () {
-    this.$store.dispatch('getAllNews')
+    this.$store.dispatch('getAllNews', 'economics')
   }
 }
 </script>

@@ -8,9 +8,9 @@ const getters = {}
 
 // actions
 const actions = {
-  getAllNews ({ commit }) {
+  getAllNews ({ commit }, category) {
     shopNews.getNews(
-        "society",
+        category,
         news => {
             commit('setNews', news)
         }
