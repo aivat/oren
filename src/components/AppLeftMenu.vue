@@ -466,7 +466,7 @@ export default {
 }
 .left-menu-wrap-list-href-svg {
 	font-weight: 300;
-    width: 20px;
+    width: 24px;
     padding-right: 22px;
     height: inherit;
     flex: none;
