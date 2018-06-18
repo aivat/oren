@@ -2,12 +2,13 @@
   <div>
     <div>
         Скоро будут тут исключительно новости
-        <div class="wrap" v-for="item in news">
-          <p class="ftw100">{{ item.title }}</p>
+        <div class="wrap" v-for="item in news" :key="item.id">
+          <p class="ftw100"> id:<b>{{ item.id }}</b> {{ item.title }}</p>
           <p class="ftw300">{{ item.content }}</p>
           <p class="ftw400">{{ item.category }}</p>
           <p class="ftw500"></p>
-          <p class="ftw700">Политика Происшествия Спорт 700</p>
+          <p class="ftw700">sex_material: {{ item.sex_material}}</p>
+          <p class="ftw700">plus-minus: {{ item.plus - item.minus}}</p>
         </div>
     </div>
   </div>

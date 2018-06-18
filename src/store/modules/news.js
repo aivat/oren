@@ -1,20 +1,28 @@
 import shopNews from '../../api/shopNews'
 
 const state = {
-    all: []
+    all: [],
+    category: ''
 }
 
 const getters = {}
 
 // actions
 const actions = {
-  getAllNews ({ commit }, category) {
+  getAllNews ({ state, commit, rootState }) {
     shopNews.getNews(
-        category,
+        state.category,
+        rootState.range.news,
+        rootState.switchAge.switchAge,
         news => {
             commit('setNews', news)
         }
     )
+    console.log('state.category=', state.category)
+  },
+  getCategory({ commit },  categoryValue) {
+    commit('setCategory', categoryValue)
+    console.log('categoryValue', categoryValue)
   }
 }
 
@@ -22,6 +30,9 @@ const actions = {
 const mutations = {
   setNews (state, news) {
     state.all = news
+  },
+  setCategory (state, categoryValue) {
+    state.category = categoryValue
   }
 }
 

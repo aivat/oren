@@ -5,6 +5,7 @@ import secrets from './modules/secrets'
 import news from './modules/news'
 import range from './modules/range'
 import rangeLocal from './plugins/rangeLocal'
+import switchAge from './modules/switchAge'
 import openMenu from './modules/openMenu'
 
 //import createLogger from '../../../src/plugins/logger'
@@ -18,7 +19,8 @@ export default new Vuex.Store({
     secrets,
     range,
     openMenu,
-    news
+    news,
+    switchAge
   },
   strict: debug
   // plugins: [rangeLocal],

@@ -42,7 +42,7 @@
                     </div>
                 </a>
             </div>
-            <div class="header-item">
+            <div class="header-item" v-on:click="setCategory('')">
                 <router-link to="/" class="header-item-href" active-class="header-item-href-active" exact>
                     <!-- <svg fill="#000000" height="26" viewBox="0 0 24 24" width="26" xmlns="http://www.w3.org/2000/svg">
                         <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
@@ -242,6 +242,10 @@ export default {
     methods: {
         openMenu () {
             this.$store.dispatch('openMenu', true)
+        },
+        setCategory(val) {
+          this.$store.dispatch('getCategory', val)
+          this.$store.dispatch('getAllNews')
         }
     }
 }

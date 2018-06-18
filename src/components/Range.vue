@@ -43,6 +43,7 @@ export default {
                 type: this.type
             }
             this.$store.dispatch('setRange',  qwe )
+            this.$store.dispatch('getAllNews', 'economics')
         } 
     }
 }

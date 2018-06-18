@@ -20,7 +20,27 @@ export default new Router({
     {
       path: '/news',
       name: 'news',
-      component: NewsList
+      component: NewsList,
+      children: [
+        {
+          // при совпадении пути с шаблоном /user/:id/profile
+          // в <router-view> компонента User будет показан UserProfile
+          path: 'politics',
+          component: NewsList
+        },
+        {
+          // при совпадении пути с шаблоном /user/:id/posts
+          // в <router-view> компонента User будет показан UserPosts
+          path: 'economics',
+          component: NewsList
+        },
+        {
+          // при совпадении пути с шаблоном /user/:id/posts
+          // в <router-view> компонента User будет показан UserPosts
+          path: 'society',
+          component: NewsList
+        }
+      ]      
     },
     {
       path: '/hot',

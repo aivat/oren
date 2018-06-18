@@ -16,8 +16,10 @@
           <div class="left-menu-wrap">
               <h3 class="left-menu-wrap-caption">Новости</h3>
               <ul class="left-menu-wrap-list">	
-                  <li>
-                    <a href="#" class="left-menu-wrap-list-href">
+                  <li v-on:click="setCategory('politics')">
+                    <!-- <a href="#" class="left-menu-wrap-list-href"> -->
+                      
+                    <router-link to="/news/politics" class="left-menu-wrap-list-href" active-class="left-menu-wrap-list-href-active">
                       <div class="left-menu-wrap-list-href-svg">
                         <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                           <path d="M0 0h24v24H0z" fill="none"/>
@@ -27,10 +29,12 @@
                       <div class="left-menu-wrap-list-href-label">
                         Политика
                       </div>
-                    </a>				
+                    <!-- </a> -->
+                    </router-link>				
                   </li>
-                  <li>
-                    <a href="#" class="left-menu-wrap-list-href">
+                  <li v-on:click="setCategory('economics')">
+                    <!-- <a href="#" class="left-menu-wrap-list-href"> -->
+                    <router-link to="/news/economics" class="left-menu-wrap-list-href" active-class="left-menu-wrap-list-href-active">
                       <div class="left-menu-wrap-list-href-svg">
                         <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                           <path d="M0 0h24v24H0z" fill="none"/>
@@ -40,10 +44,12 @@
                       <div class="left-menu-wrap-list-href-label">
                         Происшествия
                       </div>
-                    </a>	
+                    <!-- </a>	 -->
+                    </router-link>
                   </li>
-                  <li>
-                    <a href="#" class="left-menu-wrap-list-href">
+                  <li v-on:click="setCategory('society')">
+                    <router-link to="/news/society" class="left-menu-wrap-list-href" active-class="left-menu-wrap-list-href-active">
+                    <!-- <a href="#" class="left-menu-wrap-list-href"> -->
                     <div class="left-menu-wrap-list-href-svg">
                       <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 0h24v24H0z" fill="none"/>
@@ -53,7 +59,8 @@
                       <div class="left-menu-wrap-list-href-label">
                       Общество
                       </div>
-                    </a>	
+                    <!-- </a>	 -->
+                    </router-link>
                   </li>
                   <li>
                     <a href="#" class="left-menu-wrap-list-href">
@@ -201,14 +208,14 @@
                     </div>   
                     <div class="rande-label-wrap">
                       <div class="onoffswitch">
-                        <input type="checkbox" name="switchAge" class="onoffswitch-checkbox" id="switchAge" v-model="checkedAge">
+                        <input type="checkbox" name="switchAge" class="onoffswitch-checkbox" id="switchAge" v-model="rangeAge">
                         <label class="onoffswitch-label" for="switchAge"></label>
                       </div>
                     </div>
                   </div>	
                 </li>
                 <li class="left-menu-wrap-list-range">
-                  <Range v-bind:type="this.$route.name"></Range>
+                  <Range v-bind:type="getType"></Range>
                 </li>
               </ul>
           </div> 
@@ -240,7 +247,9 @@
 import Range from './Range'
 
 export default {
-   components: { Range },
+   components: { 
+     Range 
+   },
    data() {
      return {
        checkedNight: false,
@@ -248,17 +257,37 @@ export default {
      }
    },
    computed: {
-   },
-  methods: {
+      getType() {
+        if ( this.$route.name ) {
+          return this.$route.name
+        } else return 'news'       
+      },
+      rangeAge: {
+        get() {
+          return  this.$store.state.switchAge.switchAge
+        },
+        set() {
+          this.$store.dispatch('setRangeAge')
+          this.$store.dispatch('getAllNews')
+        }        
+      }
+    },
+    beforeCreate() {
+      this.$store.dispatch('initialiseStoreRangeAge')
+    },
+    methods: {
       switchNight() {
-          //this.$store.dispatch('openMenu', true)
           this.checkedNight = !this.checkedNight
       },
       switchAge() {
-          //this.$store.dispatch('openMenu', true)
-          this.checkedAge = !this.checkedAge
+          this.$store.dispatch('setRangeAge')
+          this.$store.dispatch('getAllNews')
+      },
+      setCategory(val) {
+          this.$store.dispatch('getCategory', val)
+          this.$store.dispatch('getAllNews')
       }
-  }
+    }
 }
 </script>
 
