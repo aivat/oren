@@ -1,7 +1,7 @@
 <template>
   <div class="left-menu" id="leftMenu">
       <div class="left-menu-header">
-          <a href="/" class="header-logo-href header-logo-href-close header-logo-href-left">
+          <!-- <a href="/" class="header-logo-href header-logo-href-close header-logo-href-left"> -->
             <div class="orenburg-online-wrap">
               <div class="orenburg-online">
                 ORENBURG.
@@ -10,7 +10,7 @@
                 ONLINE
               </div>
             </div>
-          </a>
+          <!-- </a> -->
       </div>
       <div class="left-menu-content">
           <div class="left-menu-wrap">
@@ -294,10 +294,11 @@ export default {
 <style scoped>
 .orenburg-online-wrap {
 	display: flex;
-	align-items: flex-end;
+	/* align-items: flex-end; */
 	font-weight: 700;
-  height: 48px;
-  line-height: 50px;
+  /* height: 50px;
+  line-height: 50px; */
+  align-items: baseline;
   color: black;
   color: rgb(123,133,142);
   /* line-height: 50px; */
@@ -305,11 +306,13 @@ export default {
 .orenburg-online {
 	text-decoration: none;
 	padding-left: 20px;
+  color: #4285f4;
 }
 .orenburg-online-online {
-	position: relative;
+	/* position: relative; */
 	font-size: 12px;
-	top: 2px;
+  /* font-size: 18px; */
+	/* top: 2px; */
 }
 
 
@@ -348,9 +351,12 @@ export default {
     rgba(189, 196, 202, 0.1);
     #bdc4ca;
 */
-    padding: 5px 0;
+    /* height: 50px; */
+    display: flex;
+    align-content: center;
+    padding: 25px 0;
     border-bottom: 1px solid rgba(189, 196, 202, 0.5);
-	margin-bottom: 10px;
+	  margin-bottom: 10px;
 }
 
 .left-menu-wrap:last-child {
@@ -585,6 +591,7 @@ export default {
         position: static;
     }
     .left-menu-header {
+      display: none;
         border: none;
         padding: 0;
     }

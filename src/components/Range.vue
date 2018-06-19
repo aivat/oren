@@ -1,22 +1,29 @@
 <template>
     <div class="range">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
-    <defs>
-        <path id="a" d="M0 0h24v24H0V0z"/>
-    </defs>
-    <clipPath id="b">
-        <use xlink:href="#a" overflow="visible"/>
-    </clipPath>
-    <path clip-path="url(#b)" d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4V6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/>
-</svg>
-        <span class="rande-label">Рейтинг</span><span id="rangeValue">{{ range }}</span>
-        <input type="range" min="-50" max="100" step="50" list="rangeList" :value="range" v-on:change="setValue">
-        <datalist id="rangeList">
-            <option value="-50" label="50"></option>
-            <option value="0" label="0"></option>
-            <option value="50" label="50"></option>
-            <option value="100" label="100"></option>
-        </datalist>
+        <div>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+                <defs>
+                    <path id="a" d="M0 0h24v24H0V0z"/>
+                </defs>
+                <clipPath id="b">
+                    <use xlink:href="#a" overflow="visible"/>
+                </clipPath>
+                <path clip-path="url(#b)" d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4V6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/>
+                </svg>
+            </div>
+            <span class="rande-label">Рейтинг</span>
+        </div>
+        <div>
+            <span id="rangeValue">{{ range }}</span>
+            <input type="range" min="-50" max="100" step="50" list="rangeList" :value="range" v-on:change="setValue">
+            <datalist id="rangeList">
+                <option value="-50" label="50"></option>
+                <option value="0" label="0"></option>
+                <option value="50" label="50"></option>
+                <option value="100" label="100"></option>
+            </datalist>
+        </div>
     </div>
 </template>
 
@@ -61,6 +68,7 @@ input[type=range]{
 	background-color: inherit;
 	cursor: pointer;
 	margin: 0;
+    height: 48px;
 }
 
 input[type=range]:focus {
@@ -71,22 +79,33 @@ input[type=range]:focus {
 	display: inline-block;
 	width: 30px;
 	color: rgba(36, 122, 134, .8);
-    padding-right: 10px;
+    padding-right: 5px;
     color: rgba(66, 133, 244, .8);
 }
 
 .range {
 	display: flex;
 	align-items: center;
+    padding-right: 25px;
+    justify-content: space-between;
 }
-.range > svg {
-    padding-right: 18px;
+.range > div > div > svg {
     fill:rgb(123,133,142);
+}
+.range > div {
+    display: flex;
+    align-items: center;
+}
+.range > div > div {
+    /* display: flex;
+    align-items: center; */
+    padding-right: 22px;
+    margin-top: 12px;
 }
 .rande-label {
     color: rgb(123,133,142);
     font-weight: 700;
-	padding-right: 20px;
+	padding-right: 10px;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
     -khtml-user-select: none; /* Konqueror HTML */
@@ -196,12 +215,21 @@ input[type=range]:focus::-ms-fill-lower {
 input[type=range]:focus::-ms-fill-upper {
     background: #ccc;
 }
+@media (min-width: 360px) {
+    input[type=range] {
+        width: 110px;
+    }
+}
+
 @media (min-width: 800px) {
     #rangeValue {
         padding-right: 5px;
     }
     .rande-label {
         padding-right: 10px;
+    }
+    input[type=range] {
+        width: 80px;
     }
 }
 @media (min-width: 1050px) {
