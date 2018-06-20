@@ -50,7 +50,15 @@ export default {
                 type: this.type
             }
             this.$store.dispatch('setRange',  qwe )
-            this.$store.dispatch('getAllNews', 'economics')
+            if (this.type == 'secrets') {
+                this.$store.dispatch('getAllSecrets', 0)
+            }
+            if (this.type == 'news' || this.type == '') {
+                this.$store.dispatch('getAllNews', 'economics')
+            }
+            
+            //this.$store.dispatch('getAllNews', 'economics')
+            
         } 
     }
 }

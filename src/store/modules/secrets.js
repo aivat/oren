@@ -32,14 +32,17 @@ const actions = {
     }) 
     commit('setLastSecret', lastSecret+6)
   },
-  getAllSecrets ({ commit, state }, lastIdSecret) {
-    commit('setLoading', true);
-    const url = 'http://orenburg.io/api/v1/secrets?lastSecrets=' + lastIdSecret
+  getAllSecrets ({ commit, state, rootState }, lastIdSecret) {
+    commit('setLoading', true)
+    if (lastIdSecret == 0) {
+      commit('resetSecrets')
+    }
+    const url = 'http://orenburg.io/api/v1/secrets?lastSecrets=' + lastIdSecret + '&rating=' + rootState.range.secrets
     axios.get(url)
     .then(response =>{
         console.log(response)
         commit('setLoading', false)
-        commit('setSecrets', response.data);
+        commit('setSecrets', response.data)
         commit('setLastSecret', lastIdSecret+30)
         //this.users = this.users.concat(response.data)
         //this.loading = false
@@ -57,16 +60,18 @@ const actions = {
 
 // mutations
 const mutations = {
-  setSecrets (state, secrets) {
+  setSecrets(state, secrets) {
     state.all = state.all.concat(secrets);
   },
-  setLastSecret (state, lastSecret) {
+  setLastSecret(state, lastSecret) {
     state.lastIdSecret = lastSecret;
   },
-  setLoading (state, loading) {
+  setLoading(state, loading) {
     state.loading = loading;
-  } 
-
+  },
+  resetSecrets(state) {
+    state.all = []
+  }
 //  decrementSecretInventory (state, { id }) {
 //    const secret = state.all.find(secret => secret.id === id)
 //    secret.inventory--

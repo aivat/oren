@@ -374,6 +374,9 @@ body {
 
 @media (min-width: 500px) {
   /* If the screen is wider then 500px, use Flexbox */
+  body {
+    overflow-y: scroll;
+  }
   .container {
     display: -webkit-flex;
     display: flex;

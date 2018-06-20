@@ -19,6 +19,7 @@ const actions = {
         }
     )
     console.log('state.category=', state.category)
+    console.log('rootState.range.news=', rootState.range.news)
   },
   getCategory({ commit },  categoryValue) {
     commit('setCategory', categoryValue)

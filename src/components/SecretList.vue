@@ -63,7 +63,9 @@
             <div class="news-list-item-content-wrap">
             </div>
             <div class="news-list-item-content-annotation secret-list-item">
+                {{ secret.id }}
               {{ secret.content }}
+              {{ secret.sex_material }}
             </div>								
           </a>
         </div>
@@ -149,9 +151,9 @@ export default {
     this.$store.dispatch('getAllSecrets', 0),
     window.addEventListener('scroll', this.handleScroll)
   },
-    destroyed () {
-        window.removeEventListener('scroll', this.handleScroll)
-    },
+  destroyed () {
+    window.removeEventListener('scroll', this.handleScroll)
+  },
   methods: {
         handleScroll (event) {
         // почему так высчитывается так до конца и не разобрался, но математическим путем опряделяется верно. 40 пиксей добавил, чтобы загрузка происхода еще до прокрутки до самого низа
