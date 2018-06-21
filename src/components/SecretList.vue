@@ -28,7 +28,10 @@
               {{ formatDate(secret.date_of_creat) }}
             </div>
             <a href="#" class="news-list-item-header-author">
-              <div class="news-list-item-header-author-avatar" id="avatar"></div>
+              <!-- <div class="news-list-item-header-author-avatar" id="avatar"></div> -->
+              <div class="author-avatar">
+                  <div class="author-avatar-char">{{ secret.author.charAt(0).toUpperCase() }}</div>
+              </div>
               <div class="author">
                 {{ secret.author }}
               </div>
@@ -315,7 +318,26 @@ export default {
 	/* background-image: url(img/site/orenday.ico); */
 	margin-right: 5px;
 }
-
+.author-avatar-char {
+    position: relative;
+    text-align: center;
+    top: 2px;
+    /* left: -1px; */
+    /* font-size: 10px; */
+    /* left: -1px;  */
+}
+.author-avatar {
+    position: relative;
+    top: 0px;
+    background-color: rgb(221, 44, 0);
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    color: #fff;
+    margin-right: 5px;
+    /* text-align: center; */
+    
+}
 .news-list-item-header-menu-href svg {
 	fill: #bdc4ca;
 }
@@ -611,7 +633,11 @@ export default {
 	.news-list-item-footer-rating-button:focus {
 		border-radius: 2px;
 	}
-
+    .author-avatar-char {
+        top: 1.5px;
+        left: -0.5px;
+        /* font-size: 12px */
+    }
 
 }
 
