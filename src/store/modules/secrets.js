@@ -3,7 +3,7 @@ import  axios from 'axios'
 // initial state
 const state = {
   all: [],
-  lastIdSecret: 1,
+  lastIdSecret: 0,
   loading: false,
   error: false
 }
@@ -42,8 +42,18 @@ const actions = {
     .then(response =>{
         console.log(response)
         commit('setLoading', false)
-        commit('setSecrets', response.data)
-        commit('setLastSecret', lastIdSecret+30)
+        if ( !rootState.switchAge.switchAge ) {
+          var newResponse = response.data.filter(function(item) {
+            return item.sex_material == 0
+          })
+        } else  {
+          var newResponse = response.data
+        }
+        commit('setSecrets', newResponse)
+        // commit('setLastSecret', lastIdSecret+30)
+        commit('setLastSecret', newResponse[newResponse.length-1].id)
+        console.log('newResponse=', newResponse.length)
+        console.log('newResponse[].id', newResponse[newResponse.length-1].id)
         //this.users = this.users.concat(response.data)
         //this.loading = false
         //this.count = this.count + 10

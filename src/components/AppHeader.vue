@@ -258,6 +258,7 @@ export default {
 /*	flex-direction: column;*/
 	align-items: flex-end;
 	font-weight: 500;
+    
 }
 .orenburg-online {
 	text-decoration: none;
@@ -266,6 +267,7 @@ export default {
 	color: maroon; */
 	padding-left: 20px;
 /*	line-height: 50px;*/
+
 }
 .orenburg-online-online {
 	position: relative;
@@ -380,6 +382,7 @@ svg {
     .orenburg-online-wrap {
 		color: #676767;
 		font-size: 18px;
+        color: rgba(66, 133, 244, 1);
 	}
 	
 	.orenburg-online-wrap-night {

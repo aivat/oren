@@ -8,8 +8,13 @@ const range = {
     },
     getters: {
         getValue: (state) => (type) => {
-            return state.type
-          }
+            if ( type == 'secrets') {
+              return state.secrets
+            }
+            if ( type == 'news') {
+              return state.news
+            }
+        }
     }, 
     actions: {
       setRange ({ commit },  rangeValue) {

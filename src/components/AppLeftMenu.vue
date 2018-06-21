@@ -268,7 +268,7 @@ export default {
         },
         set() {
           this.$store.dispatch('setRangeAge')
-          this.$store.dispatch('getAllNews')
+          // this.$store.dispatch('getAllNews')
         }        
       }
     },
@@ -281,7 +281,13 @@ export default {
       },
       switchAge() {
           this.$store.dispatch('setRangeAge')
-          this.$store.dispatch('getAllNews')
+          console.log('this.$route.name=', this.$route.path)
+          if ( this.getType == 'secrets' ) {
+            this.$store.dispatch('getAllSecrets', 0)
+          }
+          if  ( this.getType == 'news' ) {
+            this.$store.dispatch('getAllNews')
+          }
       },
       setCategory(val) {
           this.$store.dispatch('getCategory', val)

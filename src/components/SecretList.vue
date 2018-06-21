@@ -40,7 +40,7 @@
                 <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
               </svg>
             </button>
-            <div class="news-list-item-header-menu-actions news-list-item-header-menu-actions-visible">
+            <div class="news-list-item-header-menu-actions">
                 <div class="news-list-item-header-menu-actions-triangle-right">
                     
                 </div>
@@ -48,7 +48,7 @@
                 
                 </div>
                 <div class="news-list-item-header-menu-actions-list">
-                    <a class="news-list-item-header-menu-actions-list-item">
+                    <a class="news-list-item-header-menu-actions-list-item" v-on:click="copyInBufer('https://orenburg.online/secrets/' + secret.id)">
                         Копировать ссылку
                     </a>
                     <a class="news-list-item-header-menu-actions-list-item">
@@ -90,7 +90,7 @@
                       </button>
                   </div>							
               </div>
-              <div class="news-list-item-footer-strawberry">
+              <div class="news-list-item-footer-strawberry" v-show="secret.sex_material == 1">
                   <svg id="strawberry" viewBox="-6 -4 24 24" width="24" height="24">
                       <g>
                       <path  fill="#fd5d47" d="M9.207 10.076L3.53 13.62a1.903 1.903 0 0 1-2.91-1.613L.618 5.314a2.794 2.794 0 0 1 4.15-2.439l4.31 2.388a2.795 2.795 0 0 1 .13 4.813zm-5.77-6.17c-.885-.49-.72 1.295-.72 1.295s1.605-.804.72-1.295zm-.2 3.598C2.353 7.014 2.52 8.8 2.52 8.8s1.602-.806.717-1.296zm2.946-2.077c-.885-.49-.718 1.297-.718 1.297s1.603-.806.718-1.297zm-3.145 5.675c-.885-.49-.72 1.296-.72 1.296s1.604-.805.72-1.296zm2.946-2.076c-.885-.49-.72 1.296-.72 1.296s1.604-.806.72-1.296zM8.93 6.95c-.885-.49-.72 1.296-.72 1.296s1.604-.806.72-1.296z">
@@ -219,6 +219,17 @@ export default {
         },
         qwe(dates) {
            return Date.parse(dates)
+        },
+        copyInBufer: function (text) {
+
+            console.log('gjgsnrf скопировали = ', text);
+            navigator.clipboard.writeText(text)
+            .then(() => {
+                console.log('успешно скопировали = ', text);
+            })
+            .catch(err => {
+                console.log('Something went wrong', err);
+            })            
         }
     
   }
@@ -321,11 +332,16 @@ export default {
 	fill: rgb(129, 129, 129);
     cursor: pointer;
 }
+.news-list-item-header-menu-href:hover + .news-list-item-header-menu-actions {
+    display: block;
+}
 .news-list-item-header-menu-actions {
     position: relative;
     display: none;
 }
-
+.news-list-item-header-menu-actions:hover {
+    display: block;
+}
 .news-list-item-header-menu-actions-visible {
     display: block;
 }
