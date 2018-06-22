@@ -65,10 +65,7 @@
           <a href="/news-item.html" class="news-list-item-content-href">
             <div class="news-list-item-content-wrap">
             </div>
-            <div class="news-list-item-content-annotation secret-list-item">
-                {{ secret.id }}
-              {{ secret.content }}
-              {{ secret.sex_material }}
+            <div class="news-list-item-content-annotation secret-list-item">{{ secret.content }}
             </div>								
           </a>
         </div>
@@ -289,6 +286,7 @@ export default {
 	font-size: 12px;
 	align-items: center;
 	color: rgb(129, 129, 129);
+    color: #bdc4ca;
 }
 
 .news-list-item-header-menu {
@@ -307,7 +305,7 @@ export default {
 }
 
 .news-list-item-header-author:hover {
-	color: #247A86;
+	color: #4285f4;
 }
 
 .news-list-item-header-author-avatar {
@@ -321,7 +319,9 @@ export default {
 .author-avatar-char {
     position: relative;
     text-align: center;
-    top: 2px;
+    top: 1px;
+    left: 0.5px;
+    font-size: 10px;
     /* left: -1px; */
     /* font-size: 10px; */
     /* left: -1px;  */
@@ -331,10 +331,11 @@ export default {
     top: 0px;
     background-color: rgb(221, 44, 0);
     border-radius: 50%;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     color: #fff;
     margin-right: 5px;
+    
     /* text-align: center; */
     
 }
@@ -634,8 +635,8 @@ export default {
 		border-radius: 2px;
 	}
     .author-avatar-char {
-        top: 1.5px;
-        left: -0.5px;
+        top: 1px;
+        left: 0px;
         /* font-size: 12px */
     }
 
