@@ -2,20 +2,27 @@
   <div>
     <div>
      Тут будет инстаграмм 
-             <div class="wrap" v-for="item in 25" >
-          <p class="ftw100"> id:<b>{{ item.id }}</b> Сергей Овчинников, тренер ЦСКА: </p>
-          <p class="ftw300">Я не обратил особого внимания на систему видеоповторов, она уже во многих чемпионатах используется.</p>
-          <p class="ftw400">Павел Погребняк, обладатель Кубка УЕФА: </p>
-          <p class="ftw700"> С видеоповторами сейчас будет больше голов, потому что пенальти чуть ли не в каждом матче дают, как сговорились. Но они однозначно нужны, чтобы результат команды зависел не только от арбитра, но и была подстраховка. Поэтому я отношусь к ним положительно.</p>
+             <div class="wrap" v-for="item in secrets" >
+          <p class="ftw100"> id:<b>{{ item.id}}</b> </p>
+          <p class="ftw300"></p>
+
         </div>
     </div>
   </div>
 </template>
 
 <script>
-
+import { mapGetters, mapActions } from 'vuex'
 export default {
-
+  computed: { 
+    ...mapGetters({
+    secrets: 'instorens'
+    })
+  },
+  created () {
+    this.$store.dispatch('getInstorens', 0),
+    window.addEventListener('scroll', this.handleScroll)
+  },
 }
 </script>
 
