@@ -3,7 +3,7 @@
     <div>
      Тут будет инстаграмм 
              <div class="wrap" v-for="item in secrets" >
-          <p class="ftw100"> id:<b>{{ item.id}}</b> </p>
+          <p class="ftw100"> id:<b>{{ item}}</b> </p>
           <p class="ftw300"></p>
 
         </div>

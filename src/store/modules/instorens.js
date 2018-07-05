@@ -17,8 +17,15 @@ const getters = {
 const actions = {
   getInstorens ({ commit, state, rootState }, lastIdInstoren) {
 
-    const url = 'http://lba.ru/api/v1/secrets?lastSecrets=' + lastIdInstoren + '&rating=' + rootState.range.secrets
-    axios.get(url)
+    // const url = 'http://lba.ru/api/v1/secrets/10?lastSecrets=' + lastIdInstoren + '&rating=' + rootState.range.secrets
+
+    // axios.get(url)
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+    axios.defaults.headers.common['Authorization'] = token
+    axios.post('http://lba.ru/api/v1/secrets/10', {
+      id_secrets: 245,
+      login: 'qwe'
+    })
     .then(response =>{
         let newResponse = response.data
         console.log(newResponse)
