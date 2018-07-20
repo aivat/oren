@@ -37,7 +37,7 @@ const actions = {
     if (lastIdSecret == 0) {
       commit('resetSecrets')
     }
-    const url = 'http://orenburg.io/api/v1/secrets?lastSecrets=' + lastIdSecret + '&rating=' + rootState.range.secrets
+    const url = 'http://lba.ru/api/v1/secrets?lastSecrets=' + lastIdSecret + '&rating=' + rootState.range.secrets
     axios.get(url)
     .then(response =>{
         console.log(response)

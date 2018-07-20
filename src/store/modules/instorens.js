@@ -20,11 +20,10 @@ const actions = {
     // const url = 'http://lba.ru/api/v1/secrets/10?lastSecrets=' + lastIdInstoren + '&rating=' + rootState.range.secrets
 
     // axios.get(url)
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
-    axios.defaults.headers.common['Authorization'] = token
-    axios.post('http://lba.ru/api/v1/secrets/10', {
-      id_secrets: 245,
-      login: 'qwe'
+    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvb3JlbmJ1cmcub25saW5lIiwiZXhwIjoxNTM5MjAyNDU4LCJsb2dpbiI6ImFpdmF0IiwiaWRfdXNlciI6MX0.Y5ikPxlOjVHkP8jEfEgCagIqoYKSdRI-yC6yKHJXwuY'
+    // axios.defaults.headers.common['Authorization'] = token
+    axios.post('http://lba.ru/api/v1/secrets/1102/like', {
+      like: -1
     })
     .then(response =>{
         let newResponse = response.data
