@@ -20,12 +20,13 @@ const actions = {
     // const url = 'http://lba.ru/api/v1/secrets/10?lastSecrets=' + lastIdInstoren + '&rating=' + rootState.range.secrets
 
     // axios.get(url)
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvb3JlbmJ1cmcub25saW5lIiwiZXhwIjoxNTQ0MTc2MzUzLCJsb2dpbiI6ImFpdmF0IiwiaWRfdXNlciI6MX0.cA2jx7RaPHNZPoTdxyqaqZ3_AOPIdoGWD8jXCbx87Ok'
     axios.defaults.headers.common['Authorization'] = token
-    axios.post('http://lba.ru/api/v1/secrets/10', {
-      id_secrets: 245,
-      login: 'qwe'
+    axios.post('http://lba.ru/api/v1/secrets/1102/like', {
+      like: 1
     })
+    // const url = 'http://lba.ru/api/v1/secrets?lastSecrets=0'
+    // axios.get(url)
     .then(response =>{
         let newResponse = response.data
         console.log(newResponse)
@@ -33,7 +34,7 @@ const actions = {
         commit('setInstorens', newResponse)
         commit('setLastIdInstoren', newResponse[newResponse.length-1].id)
         console.log('response=', newResponse.length)
-        console.log('response[].id', newResponse[newResponse.length-1].id)
+        // console.log('response[].id', newResponse[newResponse.length-1].id)
     })
     .catch(e => {
         console.log(e.message)

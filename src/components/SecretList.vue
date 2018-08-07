@@ -3,7 +3,8 @@
 	<ul class="news-list" >
 		<li class="news-list-item" v-for="secret in secrets" :key="secret.id">
 			<article>
-        <div class="news-list-item-footer-rating-left">
+                
+        <!-- <div class="news-list-item-footer-rating-left">
             <div class="news-list-item-footer-rating-up">
                 <button class="news-list-item-footer-rating-button" title="Поставить плюсик">
                     <svg fill="#000000" height="32" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
@@ -21,7 +22,7 @@
                     </svg>										
                 </button>
             </div>							
-        </div>
+        </div> -->
         <header class="news-list-item-header">
           <div class="news-list-item-header-wrap">
             <div class="news-list-item-header-time">
@@ -71,7 +72,8 @@
         </div>
         <footer class="news-list-item-footer news-list-item-footer-secret">
           <div class="news-list-item-footer-wrap">
-              <div class="news-list-item-footer-rating">
+              <app-like-post v-bind:plus="secret.plus" v-bind:minus="secret.minus" v-bind:isLiked="secret.is_liked"></app-like-post>
+              <!-- <div class="news-list-item-footer-rating">
                   <div class="news-list-item-footer-rating-up">
                       <button class="news-list-item-footer-rating-button" title="Поставить плюсик">
                           <svg fill="#000000" height="32" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
@@ -89,7 +91,7 @@
                           </svg>										
                       </button>
                   </div>							
-              </div>
+              </div> -->
               <div class="news-list-item-footer-strawberry" v-show="secret.sex_material == 1">
                   <svg id="strawberry" viewBox="-6 -4 24 24" width="24" height="24">
                       <g>
@@ -135,7 +137,12 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import AppLikePost from './AppLikePost'
+
 export default {
+    components: { 
+     AppLikePost 
+   },
   computed: { 
     ...mapGetters({
     secrets: 'allSecrets',
