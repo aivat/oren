@@ -3,7 +3,11 @@
 	<ul class="news-list" >
 		<li class="news-list-item" v-for="secret in secrets" :key="secret.id">
 			<article>
+<<<<<<< HEAD
                 
+=======
+                <AppRating/>
+>>>>>>> 287f483cb3770a593ecf7fc6b8a1a54daebe5078
         <!-- <div class="news-list-item-footer-rating-left">
             <div class="news-list-item-footer-rating-up">
                 <button class="news-list-item-footer-rating-button" title="Поставить плюсик">
@@ -31,7 +35,7 @@
             <a href="#" class="news-list-item-header-author">
               <!-- <div class="news-list-item-header-author-avatar" id="avatar"></div> -->
               <div class="author-avatar">
-                  <div class="author-avatar-char">{{ secret.author.charAt(0).toUpperCase() }}</div>
+                  <!-- <div class="author-avatar-char">{{ secret.author.charAt(0).toUpperCase() }}</div> -->
               </div>
               <div class="author">
                 {{ secret.author }}
@@ -137,12 +141,20 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+<<<<<<< HEAD
 import AppLikePost from './AppLikePost'
 
 export default {
     components: { 
      AppLikePost 
    },
+=======
+import AppRating from './AppRating'
+export default {
+    components: { 
+        AppRating 
+    },
+>>>>>>> 287f483cb3770a593ecf7fc6b8a1a54daebe5078
   computed: { 
     ...mapGetters({
     secrets: 'allSecrets',

@@ -37,9 +37,12 @@ const actions = {
     if (lastIdSecret == 0) {
       commit('resetSecrets')
     }
+<<<<<<< HEAD
     const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvb3JlbmJ1cmcub25saW5lIiwiZXhwIjoxNTQ0MTc2MzUzLCJsb2dpbiI6ImFpdmF0IiwiaWRfdXNlciI6MX0.cA2jx7RaPHNZPoTdxyqaqZ3_AOPIdoGWD8jXCbx87Ok'
     axios.defaults.headers.common['Authorization'] = token
     // const url = 'http://orenburg.io/api/v1/secrets?lastSecrets=' + lastIdSecret + '&rating=' + rootState.range.secrets
+=======
+>>>>>>> 287f483cb3770a593ecf7fc6b8a1a54daebe5078
     const url = 'http://lba.ru/api/v1/secrets?lastSecrets=' + lastIdSecret + '&rating=' + rootState.range.secrets
     axios.get(url)
     .then(response =>{
