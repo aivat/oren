@@ -1,17 +1,17 @@
 <template>
     <div class="news-list-item-footer-rating-left">
         <div class="news-list-item-footer-rating-up" >
-            <button class="news-list-item-footer-rating-button" title="Поставить плюсик" v-bind:class="{ 'active-up': isLikeUp }">
+            <button class="news-list-item-footer-rating-button" title="Поставить плюсик" v-bind:class="{ 'active-up': isLikeUp }" v-on:click="setLike(1)">
                 <svg fill="#000000" height="32" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
                 </svg>
             </button>
         </div>
         <div class="news-list-item-footer-rating-count">
-            {{ rating }}
+            {{ ratingSecret }}
         </div>							
         <div class="news-list-item-footer-rating-down">
-            <button class="news-list-item-footer-rating-button" title="Поставить минус" v-bind:class="{ 'active-down': isLikeDown }">
+            <button class="news-list-item-footer-rating-button" title="Поставить минус" v-bind:class="{ 'active-down': isLikeDown }" v-on:click="setLike(-1)">
                 <svg fill="#000000" height="32" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
                 </svg>										
@@ -23,16 +23,54 @@
 <script>
 
 export default {
-    props: ['plus', 'minus', 'isLiked'],
+    props: ['plus', 'minus', 'isLiked', 'id'],
     computed: {
-        rating: function () {
-            return this.plus - this.minus
-        },
+        // rating: function () {
+        //     return this.plus - this.minus
+        // },
         isLikeUp: function () {
-            return this.isLiked == '1' ? true : false
+            // return this.isLiked == '1' ? true : false
+            return this.$store.getters.getIsLikeSecret(this.id) == '1' ? true : false
         },
         isLikeDown: function () {
-            return this.isLiked == '-1' ? true : false
+            return this.$store.getters.getIsLikeSecret(this.id) == '-1' ? true : false
+        },
+        ratingSecret() {
+            return this.$store.getters.getRatingSecret(this.id)
+        }
+    },
+    methods: {
+        setLike (like) {
+            let likeValue = {
+                id: Number(this.id),
+                like: Number(like),
+                isLikeDown: false,
+                isLikeUp: false
+             } 
+            // this.isLikeUp == true ? likeValue.like = 0 : likeValue.like = 1
+            // this.$store.dispatch('setLikeSecret',  likeValue )
+             switch (like) {
+                case -1:
+                    if ( this.isLikeDown ) {
+                        likeValue.isLikeDown = true
+                    }
+                    if ( this.isLikeUp ) {
+                        likeValue.isLikeUp = true
+                    }
+                    this.$store.dispatch('setLikeSecret',  likeValue )
+                    break;
+                case 1:
+                    // this.isLikeUp == true ? likeValue.like = 0 : likeValue.like = 1
+                    // this.$store.dispatch('setLikeSecret',  likeValue )
+                    if ( this.isLikeDown ) {
+                        likeValue.isLikeDown = true
+                    }
+                    if ( this.isLikeUp ) {
+                        likeValue.isLikeUp = true
+                    }
+                    this.$store.dispatch('setLikeSecret',  likeValue )
+                    break;
+            } 
         }
     }
 }

@@ -6,6 +6,7 @@ import NewsList from '../components/NewsList'
 import AppHot from '../components/AppHot'
 import AppOrenburg from '../components/AppOrenburg'
 import AppInstoren from '../components/AppInstoren'
+import AppAuth from '../components/AppAuth'
 
 Vue.use(Router)
 
@@ -16,6 +17,11 @@ export default new Router({
       path: '/',
       name: '',
       component: NewsList
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: AppAuth
     },
     {
       path: '/news',

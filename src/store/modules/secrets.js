@@ -13,7 +13,15 @@ const getters = {
   allSecrets: state => state.all,
   lastIdSecret: state => state.lastIdSecret,
   secretLoading: state => state.loading,
-  secretError: state => state.error
+  secretError: state => state.error,
+  getRatingSecret: (state) => (id) => {
+    const secret = state.all.find(secret => secret.id == id) 
+    return secret.plus - secret.minus
+  },
+  getIsLikeSecret: (state) => (id) => {
+    const secret = state.all.find(secret => secret.id == id) 
+    return secret.is_liked
+  }
 }
 
 // actions
@@ -37,12 +45,9 @@ const actions = {
     if (lastIdSecret == 0) {
       commit('resetSecrets')
     }
-<<<<<<< HEAD
     const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvb3JlbmJ1cmcub25saW5lIiwiZXhwIjoxNTQ0MTc2MzUzLCJsb2dpbiI6ImFpdmF0IiwiaWRfdXNlciI6MX0.cA2jx7RaPHNZPoTdxyqaqZ3_AOPIdoGWD8jXCbx87Ok'
     axios.defaults.headers.common['Authorization'] = token
     // const url = 'http://orenburg.io/api/v1/secrets?lastSecrets=' + lastIdSecret + '&rating=' + rootState.range.secrets
-=======
->>>>>>> 287f483cb3770a593ecf7fc6b8a1a54daebe5078
     const url = 'http://lba.ru/api/v1/secrets?lastSecrets=' + lastIdSecret + '&rating=' + rootState.range.secrets
     axios.get(url)
     .then(response =>{
@@ -71,6 +76,30 @@ const actions = {
         //this.error = true
         //this.loading = false
     });
+  },
+  setLikeSecret ({ commit }, likeValue) {
+      const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvb3JlbmJ1cmcub25saW5lIiwiZXhwIjoxNTQ0MTc2MzUzLCJsb2dpbiI6ImFpdmF0IiwiaWRfdXNlciI6MX0.cA2jx7RaPHNZPoTdxyqaqZ3_AOPIdoGWD8jXCbx87Ok'
+      axios.defaults.headers.common['Authorization'] = token
+      const url = 'http://lba.ru/api/v1/secrets/' + likeValue.id + '/like'
+      console.log('like=', likeValue.like)
+      console.log('url=', url)
+      axios.post(url, {
+        like: likeValue.like
+      })
+      .then(response =>{
+          // let newResponse = response.data
+          // console.log(newResponse)
+          // commit('setLoading', false)
+          // commit('setInstorens', newResponse)
+          // commit('setLastIdInstoren', newResponse[newResponse.length-1].id)
+          // console.log('response=', newResponse.length)
+          commit('setLikeMut', { id: likeValue.id, like: likeValue.like, isLikeDown: likeValue.isLikeDown, isLikeUp: likeValue.isLikeUp })
+          // console.log('response[].id', newResponse[newResponse.length-1].id)
+      })
+      .catch(e => {
+          console.log(e.message)
+          // commit('setLoading', false)
+      });    
   }
 }
 
@@ -87,6 +116,52 @@ const mutations = {
   },
   resetSecrets(state) {
     state.all = []
+  },
+  setLikeMut(state, { id, like, isLikeDown, isLikeUp }) {
+    const secret = state.all.find(secret => secret.id == id) 
+    console.log('id=', id)
+    // const secretID = state.all.indexOf(id)
+    // state.all['secretID'] = state.all['secretID'].plus - 1
+    // console.log('secretID=',secretID)
+    if (like == -1) {
+      if (isLikeUp) {
+        secret.is_liked = -1
+        secret.plus = Number(secret.plus) - 1
+        secret.minus = Number(secret.minus) + 1
+        return
+      }
+      if (isLikeDown) {
+        secret.minus = Number(secret.minus) - 1
+        secret.is_liked = 0
+      } else {
+        secret.is_liked = -1
+        // console.log('secret.minus=',secret.minus)
+        secret.minus = Number(secret.minus) + 1
+        // console.log('secret.minus=',secret.minus)
+      }
+    }
+    if (like == 1) {
+      console.log('secret=',secret)
+      if (isLikeDown) {
+        secret.is_liked = 1
+        console.log('secret.plus=',secret.plus)
+        console.log('secret.minus=',secret.minus)
+        secret.plus = Number(secret.plus) + 1
+        secret.minus = Number(secret.minus) - 1
+        console.log('secret.plus2=',secret.plus)
+        console.log('secret.minus2=',secret.minus)
+        return
+      }
+      if (isLikeUp) {
+        secret.plus = Number(secret.plus) - 1
+        secret.is_liked = 0
+      } else {
+        secret.is_liked = 1
+        secret.plus = Number(secret.plus) + 1
+      }
+      console.log('secret.plus3=',secret.plus)
+        console.log('secret.minus3=',secret.minus)
+    }
   }
 //  decrementSecretInventory (state, { id }) {
 //    const secret = state.all.find(secret => secret.id === id)
