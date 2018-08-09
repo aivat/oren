@@ -8,7 +8,7 @@ import rangeLocal from './plugins/rangeLocal'
 import switchAge from './modules/switchAge'
 import openMenu from './modules/openMenu'
 import instorens from './modules/instorens'
-
+import login from './modules/login'
 //import createLogger from '../../../src/plugins/logger'
 
 Vue.use(Vuex)
@@ -22,7 +22,8 @@ export default new Vuex.Store({
     openMenu,
     news,
     switchAge,
-    instorens
+    instorens,
+    login
   },
   strict: debug
   // plugins: [rangeLocal],

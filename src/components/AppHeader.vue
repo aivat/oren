@@ -16,17 +16,6 @@
             <div class="header-item header-item-gamburger">
                 <a class="header-item-href link-gamburger" v-on:click="openMenu()">
                     <div class="gamburger">
-                        <!-- <svg fill="#000000" height="26" viewBox="0 0 24 24" width="26" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-                        </svg> -->
-                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 -1 24 24">
-                            <path d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-                        </svg> -->
-                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24">
-                            <path d="M2 15.5v2h20v-2H2zm0-5v2h20v-2H2zm0-5v2h20v-2H2z"/>
-                            <path d="M0 0h24v24H0z" fill="none"/>
-                        </svg> -->
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="26px"
                             height="26px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
                         <g id="Bounding_Boxes">
@@ -44,9 +33,6 @@
             </div>
             <div class="header-item" v-on:click="setCategory('')">
                 <router-link to="/" class="header-item-href" active-class="header-item-href-active" exact>
-                    <!-- <svg fill="#000000" height="26" viewBox="0 0 24 24" width="26" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                    </svg> -->
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="27px"
                             height="27px" viewBox="0 2 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
                         <g id="Header_x2F_BG" display="none">
@@ -112,10 +98,6 @@
             <div class="header-item">
                 <router-link to="/secrets" class="header-item-href" active-class="header-item-href-active">
                     <div class="header-item-svg">
-                        <!-- <svg fill="#000000" height="24" viewBox="0 -2 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="9" cy="9" r="4"/>
-                            <path d="M9 15c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4zm7.76-9.64l-1.68 1.69c.84 1.18.84 2.71 0 3.89l1.68 1.69c2.02-2.02 2.02-5.07 0-7.27zM20.07 2l-1.63 1.63c2.77 3.02 2.77 7.56 0 10.74L20.07 16c3.9-3.89 3.91-9.95 0-14z"/>
-                        </svg> -->
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="26px"
                             height="26px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
                         <g id="Header_x2F_BG" display="none">
@@ -217,26 +199,35 @@
             </div>
         </div>
         <div class="header-login">
-            <router-link to="/login" class="header-login-href">
+            <!-- <router-link to="/login" class="header-login-href"> -->
+            <button class="header-login-href" @click="showModalLogin()">
                 <svg class="header-login-svg" fill="#000000" height="26" viewBox="0 0 24 24" width="26" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
                 </svg>
                 <div class="header-login-text">
                     Войти
                 </div>
-            </router-link>
+            </button>
+            <!-- </router-link> -->
         </div>
+        <AppLogin v-if="isShowModalLogin"></AppLogin>
     </div>
 </template>
 
 <script>
-// import { router } from '../main.js'
+import AppLogin  from './AppLogin.vue'
 
 export default {
     data () {
         return {
-            title: 'book',
-			currentRoute: this.$router.currentRoute.path	
+        }
+    },
+    components: {
+        AppLogin
+    },
+    computed: {
+        isShowModalLogin() {
+            return this.$store.state.login.showModalLogin;
         }
     },
     methods: {
@@ -246,6 +237,9 @@ export default {
         setCategory(val) {
           this.$store.dispatch('getCategory', val)
           this.$store.dispatch('getAllNews')
+        },
+        showModalLogin () {
+            this.$store.dispatch('setModalLogin')
         }
     }
 }
@@ -351,6 +345,7 @@ svg {
         align-items: center;
         /* align-items: baseline; */
         justify-content: center;
+        /* border: 0; */
     }
     .header-item-href:hover:not(.header-item-href-active):not(.link-gamburger) {
         color: rgba(66, 133, 244, 1);
@@ -462,6 +457,13 @@ svg {
 		text-decoration: none;
 		color: black;
 		color: #676767;
+        border: 0;
+        background-color: inherit;
+        cursor: pointer;
+        outline: none;
+        font-size: inherit;
+        font-family: inherit;
+        font-weight: inherit;
 	}
 	.header-login-href:hover {
 		color: #247A86;
