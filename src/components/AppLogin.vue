@@ -5,7 +5,7 @@
                 <h2>Добро пожаловать!</h2>
                 <p>Войдите в систему, чтобы получить доступ к голосованию и комментированию событий нашего города</p>
                 <input class="input-auth" type="text" size="20" v-model="user.login" placeholder="Логин">
-                <input class="input-auth" type="tel" v-model="user.pass" placeholder="Пароль">
+                <input class="input-auth" type="tel" v-model="user.password" placeholder="Пароль">
                 <div class="modal-actions-error" v-if="error">
                     Заполните все поля!
                 </div>
@@ -33,7 +33,7 @@ export default {
         return {
             user: {
                 login: '',
-                pass: ''
+                password: ''
             },
             error: false,
             showResult: false
@@ -41,7 +41,7 @@ export default {
     },
     computed: {
         isValid: function () {
-            if ( this.user.name == '' || this.user.pass == '') {
+            if ( this.user.name == '' || this.user.password == '') {
                 return false
             } else return true
         }
@@ -49,6 +49,7 @@ export default {
     methods: {  
             postLogin () {
                 if ( this.isValid ) {
+                    this.$store.dispatch('getAuth', this.user)
                 //     axios.post('http://lba.ru/crm_int.php', this.client)
                 //     .then(response => {
                 //         console.log('данные =', response);
