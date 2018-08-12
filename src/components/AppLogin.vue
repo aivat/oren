@@ -1,24 +1,28 @@
 <template>
     <div class="modal" name="modal" @click.self="closeModalLogin()">
         <div class="modal-wrapper">
-            <div v-if="!showResult" class="modal-actions">
+            <!-- <div class="modal-actions"> -->
+                <form class="modal-actions" @submit.prevent="postLogin">
                 <h2>Добро пожаловать!</h2>
                 <p>Войдите в систему, чтобы получить доступ к голосованию и комментированию событий нашего города</p>
-                <input class="input-auth" type="text" size="20" v-model="user.login" placeholder="Логин">
-                <input class="input-auth" type="tel" v-model="user.password" placeholder="Пароль">
-                <div class="modal-actions-error" v-if="error">
+                <input required class="input-auth" type="text" size="20" v-model="user.login" placeholder="Логин">
+                <input required class="input-auth" type="password" v-model="user.password" placeholder="Пароль">
+                <!-- <div class="modal-actions-error" v-if="error">
                     Заполните все поля!
-                </div>
+                </div> -->
                 <div class="modal-wrap-action">
-                    <button class="modal-wrapper-button-in" v-on:click="postLogin()">Войти</button>
+                    <!-- <button type="submit" class="modal-wrapper-button-in" v-on:click="postLogin()">Войти</button> -->
+                    <button type="submit" class="modal-wrapper-button-in">Войти</button>
                     <a class="modal-wrapper-link" href="#">Забыли пароль?</a>
                 </div>
+                
                 <p class="modal-wrapper-p">Нет аккаунта? <a class="modal-wrapper-link" href="#">Создайте.</a>
                 </p>
-            </div>
-            <div v-if="showResult" class="modal-result">
+                </form>
+            <!-- </div> -->
+            <!-- <div v-if="showResult" class="modal-result">
                 Спасибо, мы перезвоним Вам в ближайшее время!
-            </div>
+            </div> -->
             <button @click="closeModalLogin()" class="modal-wrapper-button">Закрыть</button>
         </div> 
     </div>
@@ -49,7 +53,13 @@ export default {
     methods: {  
             postLogin () {
                 if ( this.isValid ) {
-                    this.$store.dispatch('getAuth', this.user)
+                    
+                    // console.log('username=',username);
+                    // this.$store.dispatch('authRequest', this.user).then(() => {
+                    this.$store.dispatch('AUTH_REQUEST', this.user).then(() => {
+                        this.$store.dispatch('setModalLogin')
+                        this.$router.push('/')
+                    })
                 //     axios.post('http://lba.ru/crm_int.php', this.client)
                 //     .then(response => {
                 //         console.log('данные =', response);
