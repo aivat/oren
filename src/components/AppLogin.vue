@@ -7,9 +7,9 @@
                 <p>Войдите в систему, чтобы получить доступ к голосованию и комментированию событий нашего города</p>
                 <input required class="input-auth" type="text" size="20" v-model="user.login" placeholder="Логин">
                 <input required class="input-auth" type="password" v-model="user.password" placeholder="Пароль">
-                <!-- <div class="modal-actions-error" v-if="error">
-                    Заполните все поля!
-                </div> -->
+                <div class="modal-actions-error" v-if="error">
+                    {{ this.errorText }}
+                </div>
                 <div class="modal-wrap-action">
                     <!-- <button type="submit" class="modal-wrapper-button-in" v-on:click="postLogin()">Войти</button> -->
                     <button type="submit" class="modal-wrapper-button-in">Войти</button>
@@ -40,6 +40,7 @@ export default {
                 password: ''
             },
             error: false,
+            errorText: '',
             showResult: false
         }
     },
@@ -49,6 +50,9 @@ export default {
                 return false
             } else return true
         }
+        // getError() {
+        //     return this.$store.state.login.error
+        // }
     },
     methods: {  
             postLogin () {
@@ -56,10 +60,26 @@ export default {
                     
                     // console.log('username=',username);
                     // this.$store.dispatch('authRequest', this.user).then(() => {
-                    this.$store.dispatch('AUTH_REQUEST', this.user).then(() => {
+                    this.$store.dispatch('AUTH_REQUEST', this.user).
+                    then(() => {
                         this.$store.dispatch('setModalLogin')
                         this.$router.push('/')
+                        this.errorText = ''
+                        this.error = false
                     })
+                    .catch(e => {
+                        console.log(e.message)
+                        this.error = true
+                        // this.error = this.$store.state.login.error
+                        console.log('efef=', this.error)
+                        if ( this.$store.state.login.error == 110 ) {
+                            this.errorText = 'Неправильный логин или пароль'
+                        }
+                        if ( this.$store.state.login.error == 111 ) {
+                            this.errorText = 'Подтвердите аккаунт по ссылке, высланной вам на электронную почту'
+                        }
+                        // commit('setLoading', false)
+                    }); 
                 //     axios.post('http://lba.ru/crm_int.php', this.client)
                 //     .then(response => {
                 //         console.log('данные =', response);
@@ -200,7 +220,7 @@ export default {
     font-size: 14px;
 }
 .modal-actions-error {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     color: red;
 }
 @media (min-width: 800px) {

@@ -45,8 +45,8 @@ const actions = {
     if (lastIdSecret == 0) {
       commit('resetSecrets')
     }
-    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvb3JlbmJ1cmcub25saW5lIiwiZXhwIjoxNTQ0MTc2MzUzLCJsb2dpbiI6ImFpdmF0IiwiaWRfdXNlciI6MX0.cA2jx7RaPHNZPoTdxyqaqZ3_AOPIdoGWD8jXCbx87Ok'
-    axios.defaults.headers.common['Authorization'] = token
+    // const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvb3JlbmJ1cmcub25saW5lIiwiZXhwIjoxNTQ0MTc2MzUzLCJsb2dpbiI6ImFpdmF0IiwiaWRfdXNlciI6MX0.cA2jx7RaPHNZPoTdxyqaqZ3_AOPIdoGWD8jXCbx87Ok'
+    // axios.defaults.headers.common['Authorization'] = token
     // const url = 'http://orenburg.io/api/v1/secrets?lastSecrets=' + lastIdSecret + '&rating=' + rootState.range.secrets
     const url = 'http://lba.ru/api/v1/secrets?lastSecrets=' + lastIdSecret + '&rating=' + rootState.range.secrets
     axios.get(url)
@@ -78,17 +78,19 @@ const actions = {
     });
   },
   setLikeSecret ({ commit }, likeValue) {
-      const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvb3JlbmJ1cmcub25saW5lIiwiZXhwIjoxNTQ0MTc2MzUzLCJsb2dpbiI6ImFpdmF0IiwiaWRfdXNlciI6MX0.cA2jx7RaPHNZPoTdxyqaqZ3_AOPIdoGWD8jXCbx87Ok'
-      axios.defaults.headers.common['Authorization'] = token
+      // const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvb3JlbmJ1cmcub25saW5lIiwiZXhwIjoxNTQ0MTc2MzUzLCJsb2dpbiI6ImFpdmF0IiwiaWRfdXNlciI6MX0.cA2jx7RaPHNZPoTdxyqaqZ3_AOPIdoGWD8jXCbx87Ok'
+      // axios.defaults.headers.common['Authorization'] = token
       const url = 'http://lba.ru/api/v1/secrets/' + likeValue.id + '/like'
       console.log('like=', likeValue.like)
       console.log('url=', url)
+      console.log('headers1=', axios.defaults.headers.common['Authorization'])
       axios.post(url, {
         like: likeValue.like
       })
       .then(response =>{
           // let newResponse = response.data
-          // console.log(newResponse)
+          console.log(response.data)
+          console.log('headers2=', axios.defaults.headers.common['Authorization'])
           // commit('setLoading', false)
           // commit('setInstorens', newResponse)
           // commit('setLastIdInstoren', newResponse[newResponse.length-1].id)
