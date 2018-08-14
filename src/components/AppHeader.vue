@@ -208,6 +208,7 @@
                     Войти
                 </div>
             </button>
+            <div class="header-login-name" v-if="isShowButtonLogin">{{ login }}</div>
             <button class="header-login-href" @click="logOut()" v-if="isShowButtonLogin">
                 <svg class="header-login-svg" fill="#000000" height="26" viewBox="0 0 24 24" width="26" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
@@ -235,11 +236,15 @@ export default {
     },
     computed: {
         isShowModalLogin() {
-            return this.$store.state.login.showModalLogin;
+            return this.$store.state.login.showModalLogin
         },
         isShowButtonLogin() {
             console.log(' this.$store.getters.isAuthenticated=', this.$store.getters.isAuthenticated)
-            return this.$store.getters.isAuthenticated;
+            return this.$store.getters.isAuthenticated
+        },
+        login() {
+            console.log(' this.$store.getters.login=', this.$store.getters.login)
+             return this.$store.getters.login
         }
     },
     methods: {
@@ -345,29 +350,33 @@ svg {
 .header-login-href svg {
     fill: currentColor;
 }
-	.header-item-href svg {
-        
-		fill: currentColor;
-	}
-	.header-item-active svg {
-		fill: currentColor;
-	}
-    .header-item-href {
-        color: rgb(123,133,142);
-        width: 48px;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        /* align-items: baseline; */
-        justify-content: center;
-        /* border: 0; */
-    }
-    .header-item-href:hover:not(.header-item-href-active):not(.link-gamburger) {
-        color: rgba(66, 133, 244, 1);
-    }
-    .header-item-href-active {
-		color: rgba(66, 133, 244, 1);
-	}
+.header-item-href svg {
+    
+    fill: currentColor;
+}
+.header-item-active svg {
+    fill: currentColor;
+}
+.header-item-href {
+    color: rgb(123,133,142);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    /* align-items: baseline; */
+    justify-content: center;
+    /* border: 0; */
+}
+.header-item-href:hover:not(.header-item-href-active):not(.link-gamburger) {
+    color: rgba(66, 133, 244, 1);
+}
+.header-item-href-active {
+    color: rgba(66, 133, 244, 1);
+}
+.header-login-name {
+    color: rgb(123,133,142);
+    align-self: center;
+}
 @media (min-width: 500px) {
     .header {
         height: 56px;

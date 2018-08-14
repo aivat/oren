@@ -5,11 +5,12 @@ const state = {
     status: '',
     error: '',
     hasLoadedOnce: false,
-    login: ''
+    login: localStorage.getItem('login') || ''
 }
 const getters = {
     isAuthenticated: state => !!state.token,
     authStatus: state => state.status,
+    login: state => state.login
 }
 
 const actions = {
@@ -62,6 +63,7 @@ const actions = {
             console.log('response.data=', resp.data)
             console.log('err=', resp.status)
             localStorage.setItem('userToken', resp.data)
+            
             // Here set the header of your ajax library to the token value.
             // example with axios
             commit( 'AUTH_LOGIN', user.login)
@@ -116,6 +118,7 @@ const mutations = {
   },
   AUTH_LOGIN (state, login) {
     state.login = login
+    localStorage.setItem('login', login)
   }  
 
 }

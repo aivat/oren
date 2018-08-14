@@ -297,7 +297,7 @@ opacity: 0;
   pointer-events: none;
 }
 body {
-   overflow: hidden;
+   /* overflow: hidden; */
   overflow-x: hidden;
   margin: 0;
   font-size: 18px;
