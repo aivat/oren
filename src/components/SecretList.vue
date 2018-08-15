@@ -362,7 +362,10 @@ export default {
 	fill: rgb(129, 129, 129);
     cursor: pointer;
 }
-.news-list-item-header-menu-href:hover + .news-list-item-header-menu-actions {
+/* .news-list-item-header-menu-href:hover + .news-list-item-header-menu-actions {
+    display: block;
+} */
+.news-list-item-header-menu-href:focus + .news-list-item-header-menu-actions {
     display: block;
 }
 .news-list-item-header-menu-actions {

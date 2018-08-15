@@ -46,31 +46,31 @@ export default {
                 like: Number(like),
                 isLikeDown: false,
                 isLikeUp: false
-             } 
-            // this.isLikeUp == true ? likeValue.like = 0 : likeValue.like = 1
-            // this.$store.dispatch('setLikeSecret',  likeValue )
-             switch (like) {
-                case -1:
-                    if ( this.isLikeDown ) {
-                        likeValue.isLikeDown = true
-                    }
-                    if ( this.isLikeUp ) {
-                        likeValue.isLikeUp = true
-                    }
-                    this.$store.dispatch('setLikeSecret',  likeValue )
-                    break;
-                case 1:
-                    // this.isLikeUp == true ? likeValue.like = 0 : likeValue.like = 1
-                    // this.$store.dispatch('setLikeSecret',  likeValue )
-                    if ( this.isLikeDown ) {
-                        likeValue.isLikeDown = true
-                    }
-                    if ( this.isLikeUp ) {
-                        likeValue.isLikeUp = true
-                    }
-                    this.$store.dispatch('setLikeSecret',  likeValue )
-                    break;
-            } 
+             }
+             if ( this.$store.getters.isAuthenticated ) {
+                switch (like) {
+                    case -1:
+                        if ( this.isLikeDown ) {
+                            likeValue.isLikeDown = true
+                        }
+                        if ( this.isLikeUp ) {
+                            likeValue.isLikeUp = true
+                        }
+                        this.$store.dispatch('setLikeSecret',  likeValue )
+                        break;
+                    case 1:
+                        // this.isLikeUp == true ? likeValue.like = 0 : likeValue.like = 1
+                        // this.$store.dispatch('setLikeSecret',  likeValue )
+                        if ( this.isLikeDown ) {
+                            likeValue.isLikeDown = true
+                        }
+                        if ( this.isLikeUp ) {
+                            likeValue.isLikeUp = true
+                        }
+                        this.$store.dispatch('setLikeSecret',  likeValue )
+                        break;
+                } 
+             } else this.$store.dispatch('setModalLogin')
         }
     }
 }
@@ -87,15 +87,7 @@ export default {
 	height: 32px;
 }
 
-.news-list-item-footer-rating-up>button:hover {
-	background-color: rgb(138, 200, 88);
-	border: 1px solid rgb(138, 200, 88);
-	transition: background-color, border 200ms;
-    transition-property: background-color, border;
-    transition-duration: 200ms;
-    transition-timing-function: initial;
-    transition-delay: initial;
-}
+
 
 
 .news-list-item-footer-rating-up>button:active {
@@ -134,14 +126,7 @@ export default {
 .news-list-item-footer-rating-button-night {
 	border: 1px solid rgb(24,25,29);
 }
-.news-list-item-footer-rating-button svg:hover {
-	fill: white;
-	transition: fill 200ms;
-    transition-property: fill;
-    transition-duration: 200ms;
-    transition-timing-function: initial;
-    transition-delay: initial;
-}
+
 .news-list-item-footer-rating-count {
 	color: #db4437;
 	margin: 0 5px;
@@ -149,15 +134,7 @@ export default {
 	font-weight: 700;
 }
 
-.news-list-item-footer-rating-down>button:hover {
-	background-color: #db4437;
-	border: 1px solid #db4437;
-	transition: background-color, border 200ms;
-    transition-property: background-color, border;
-    transition-duration: 200ms;
-    transition-timing-function: initial;
-    transition-delay: initial;
-}
+
 
 .news-list-item-footer-rating-down>button:active {
 	background-color: white;
@@ -191,6 +168,36 @@ export default {
 		border-radius: 2px;
 	}
 }
+
+@media (min-width: 1024px) {
+    .news-list-item-footer-rating-up>button:hover {
+        background-color: rgb(138, 200, 88);
+        border: 1px solid rgb(138, 200, 88);
+        transition: background-color, border 200ms;
+        transition-property: background-color, border;
+        transition-duration: 200ms;
+        transition-timing-function: initial;
+        transition-delay: initial;
+    }
+    .news-list-item-footer-rating-button svg:hover {
+        fill: white;
+        transition: fill 200ms;
+        transition-property: fill;
+        transition-duration: 200ms;
+        transition-timing-function: initial;
+        transition-delay: initial;
+    }
+    .news-list-item-footer-rating-down>button:hover {
+        background-color: #db4437;
+        border: 1px solid #db4437;
+        transition: background-color, border 200ms;
+        transition-property: background-color, border;
+        transition-duration: 200ms;
+        transition-timing-function: initial;
+        transition-delay: initial;
+    }
+}
+
 @media (min-width: 1280px) {
     .news-list-item-footer-rating-left {
         display: flex;
